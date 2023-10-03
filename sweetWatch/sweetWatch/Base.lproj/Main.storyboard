@@ -30,6 +30,11 @@
                                     <color key="baseForegroundColor" systemColor="labelColor"/>
                                     <color key="baseBackgroundColor" systemColor="systemYellowColor"/>
                                 </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="displayLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7CQ-6l-bZn"/>
                                 </connections>
@@ -99,7 +104,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C9u-yG-Rbp">
                                         <rect key="frame" x="176.33333333333334" y="70" width="40.666666666666657" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oae-ta-6b2">
@@ -113,7 +118,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2X-ve-0gY">
                                         <rect key="frame" x="159.66666666666666" y="175" width="74" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7VQ-4p-BMj">
@@ -127,11 +132,25 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSy-nK-uwr">
                                         <rect key="frame" x="171.33333333333334" y="9.9999999999999982" width="50.333333333333343" height="25.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZcX-sN-7Rq">
+                                        <rect key="frame" x="140.66666666666666" y="310" width="111.66666666666666" height="35"/>
+                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="tinted" title="Connection">
+                                            <color key="baseForegroundColor" systemColor="labelColor"/>
+                                            <color key="baseBackgroundColor" systemColor="systemYellowColor"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="labelColor"/>
                                 <constraints>
                                     <constraint firstItem="A2X-ve-0gY" firstAttribute="top" secondItem="Oae-ta-6b2" secondAttribute="bottom" constant="40" id="Bbk-uY-WiH"/>
                                     <constraint firstItem="Oae-ta-6b2" firstAttribute="centerX" secondItem="34L-29-5dn" secondAttribute="centerX" id="C4v-2i-MGA"/>
@@ -141,7 +160,9 @@
                                     <constraint firstItem="7VQ-4p-BMj" firstAttribute="centerX" secondItem="34L-29-5dn" secondAttribute="centerX" id="Mb4-hl-67v"/>
                                     <constraint firstItem="7VQ-4p-BMj" firstAttribute="top" secondItem="A2X-ve-0gY" secondAttribute="bottom" constant="10" id="T8z-h7-Pnc"/>
                                     <constraint firstItem="C9u-yG-Rbp" firstAttribute="top" secondItem="34L-29-5dn" secondAttribute="top" constant="70" id="WKZ-b9-Lp2"/>
+                                    <constraint firstItem="ZcX-sN-7Rq" firstAttribute="centerX" secondItem="34L-29-5dn" secondAttribute="centerX" id="XZl-zz-2RA"/>
                                     <constraint firstItem="aSy-nK-uwr" firstAttribute="top" secondItem="34L-29-5dn" secondAttribute="top" constant="10" id="gzG-hz-Gv5"/>
+                                    <constraint firstItem="ZcX-sN-7Rq" firstAttribute="top" secondItem="7VQ-4p-BMj" secondAttribute="bottom" constant="70" id="nb5-pz-0sY"/>
                                     <constraint firstItem="Oae-ta-6b2" firstAttribute="top" secondItem="C9u-yG-Rbp" secondAttribute="bottom" constant="10" id="w5t-Vj-gjL"/>
                                 </constraints>
                             </view>
@@ -159,7 +180,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKT-gc-7Ye">
                                         <rect key="frame" x="176.33333333333334" y="70" width="40.666666666666657" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aly-LD-NrY">
@@ -173,23 +194,39 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NsV-Jg-DMC">
                                         <rect key="frame" x="160.33333333333334" y="9.9999999999999982" width="72.333333333333343" height="25.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUn-vc-yhG">
                                         <rect key="frame" x="159.66666666666666" y="175" width="74" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SFw-kd-NUm">
+                                        <rect key="frame" x="154.66666666666666" y="310" width="84" height="35"/>
+                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="tinted" title="Sign Up">
+                                            <color key="baseForegroundColor" systemColor="labelColor"/>
+                                            <color key="baseBackgroundColor" systemColor="systemYellowColor"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemCyanColor"/>
+                                <color key="backgroundColor" systemColor="labelColor"/>
                                 <constraints>
                                     <constraint firstItem="NsV-Jg-DMC" firstAttribute="top" secondItem="384-Bn-S7Z" secondAttribute="top" constant="10" id="3dS-xf-Y2X"/>
                                     <constraint firstItem="aly-LD-NrY" firstAttribute="top" secondItem="NUn-vc-yhG" secondAttribute="bottom" constant="10" id="3uC-gC-T3a"/>
                                     <constraint firstItem="NUn-vc-yhG" firstAttribute="centerX" secondItem="384-Bn-S7Z" secondAttribute="centerX" id="4IB-E7-BSp"/>
                                     <constraint firstItem="NsV-Jg-DMC" firstAttribute="centerX" secondItem="384-Bn-S7Z" secondAttribute="centerX" id="8wI-Fj-tIK"/>
+                                    <constraint firstItem="SFw-kd-NUm" firstAttribute="centerX" secondItem="384-Bn-S7Z" secondAttribute="centerX" id="Rin-68-fe4"/>
                                     <constraint firstItem="xWd-Sp-4Xk" firstAttribute="top" secondItem="sKT-gc-7Ye" secondAttribute="bottom" constant="10" id="dgf-BI-7Nd"/>
+                                    <constraint firstItem="SFw-kd-NUm" firstAttribute="top" secondItem="aly-LD-NrY" secondAttribute="bottom" constant="70" id="iWd-7f-yMq"/>
                                     <constraint firstItem="sKT-gc-7Ye" firstAttribute="top" secondItem="384-Bn-S7Z" secondAttribute="top" constant="70" id="mhs-RU-X7H"/>
                                     <constraint firstItem="NUn-vc-yhG" firstAttribute="top" secondItem="xWd-Sp-4Xk" secondAttribute="bottom" constant="40" id="mjD-Ai-P4g"/>
                                     <constraint firstItem="sKT-gc-7Ye" firstAttribute="centerX" secondItem="384-Bn-S7Z" secondAttribute="centerX" id="ndG-he-j0h"/>
@@ -233,9 +270,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemCyanColor">
-            <color red="0.1960784314" green="0.67843137249999996" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
