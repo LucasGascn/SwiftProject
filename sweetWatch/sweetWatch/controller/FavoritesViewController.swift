@@ -27,7 +27,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell
+        return UITableViewCell()
     }
     
     @IBAction func Series(_ sender: Any) {
