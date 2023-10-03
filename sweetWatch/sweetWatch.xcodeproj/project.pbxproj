@@ -16,6 +16,14 @@
 		5983CC322ACC09B90023148F /* sweetWatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983CC312ACC09B90023148F /* sweetWatchTests.swift */; };
 		5983CC3C2ACC09B90023148F /* sweetWatchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983CC3B2ACC09B90023148F /* sweetWatchUITests.swift */; };
 		5983CC3E2ACC09B90023148F /* sweetWatchUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983CC3D2ACC09B90023148F /* sweetWatchUITestsLaunchTests.swift */; };
+		E493FC892ACC217900A63965 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E493FC882ACC217900A63965 /* LoginViewController.swift */; };
+		E493FC8C2ACC4C8C00A63965 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E493FC8B2ACC4C8C00A63965 /* User.swift */; };
+		E493FC8E2ACC4C9A00A63965 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = E493FC8D2ACC4C9A00A63965 /* Movie.swift */; };
+		E493FC902ACC4CAE00A63965 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = E493FC8F2ACC4CAE00A63965 /* Serie.swift */; };
+		E493FC922ACC4CB900A63965 /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E493FC912ACC4CB900A63965 /* Actor.swift */; };
+		E493FC942ACC4CE800A63965 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E493FC932ACC4CE800A63965 /* HomeViewController.swift */; };
+		E493FC972ACC4DBD00A63965 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E493FC962ACC4DBD00A63965 /* SearchViewController.swift */; };
+		E493FC992ACC4E1E00A63965 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E493FC982ACC4E1E00A63965 /* FavoritesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +57,14 @@
 		5983CC372ACC09B90023148F /* sweetWatchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sweetWatchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5983CC3B2ACC09B90023148F /* sweetWatchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sweetWatchUITests.swift; sourceTree = "<group>"; };
 		5983CC3D2ACC09B90023148F /* sweetWatchUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sweetWatchUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E493FC882ACC217900A63965 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E493FC8B2ACC4C8C00A63965 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E493FC8D2ACC4C9A00A63965 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		E493FC8F2ACC4CAE00A63965 /* Serie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serie.swift; sourceTree = "<group>"; };
+		E493FC912ACC4CB900A63965 /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
+		E493FC932ACC4CE800A63965 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		E493FC962ACC4DBD00A63965 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		E493FC982ACC4E1E00A63965 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +115,10 @@
 		5983CC192ACC09B70023148F /* sweetWatch */ = {
 			isa = PBXGroup;
 			children = (
+				E493FC952ACC4D4B00A63965 /* controller */,
+				E493FC8A2ACC4C7900A63965 /* model */,
 				5983CC1A2ACC09B70023148F /* AppDelegate.swift */,
 				5983CC1C2ACC09B70023148F /* SceneDelegate.swift */,
-				5983CC1E2ACC09B70023148F /* ViewController.swift */,
 				5983CC202ACC09B70023148F /* Main.storyboard */,
 				5983CC232ACC09B80023148F /* Assets.xcassets */,
 				5983CC252ACC09B80023148F /* LaunchScreen.storyboard */,
@@ -125,6 +142,29 @@
 				5983CC3D2ACC09B90023148F /* sweetWatchUITestsLaunchTests.swift */,
 			);
 			path = sweetWatchUITests;
+			sourceTree = "<group>";
+		};
+		E493FC8A2ACC4C7900A63965 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				E493FC8B2ACC4C8C00A63965 /* User.swift */,
+				E493FC8D2ACC4C9A00A63965 /* Movie.swift */,
+				E493FC8F2ACC4CAE00A63965 /* Serie.swift */,
+				E493FC912ACC4CB900A63965 /* Actor.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		E493FC952ACC4D4B00A63965 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				5983CC1E2ACC09B70023148F /* ViewController.swift */,
+				E493FC882ACC217900A63965 /* LoginViewController.swift */,
+				E493FC932ACC4CE800A63965 /* HomeViewController.swift */,
+				E493FC962ACC4DBD00A63965 /* SearchViewController.swift */,
+				E493FC982ACC4E1E00A63965 /* FavoritesViewController.swift */,
+			);
+			path = controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,9 +298,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E493FC972ACC4DBD00A63965 /* SearchViewController.swift in Sources */,
+				E493FC892ACC217900A63965 /* LoginViewController.swift in Sources */,
 				5983CC1F2ACC09B70023148F /* ViewController.swift in Sources */,
+				E493FC8E2ACC4C9A00A63965 /* Movie.swift in Sources */,
 				5983CC1B2ACC09B70023148F /* AppDelegate.swift in Sources */,
+				E493FC902ACC4CAE00A63965 /* Serie.swift in Sources */,
+				E493FC992ACC4E1E00A63965 /* FavoritesViewController.swift in Sources */,
+				E493FC942ACC4CE800A63965 /* HomeViewController.swift in Sources */,
+				E493FC8C2ACC4C8C00A63965 /* User.swift in Sources */,
 				5983CC1D2ACC09B70023148F /* SceneDelegate.swift in Sources */,
+				E493FC922ACC4CB900A63965 /* Actor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
