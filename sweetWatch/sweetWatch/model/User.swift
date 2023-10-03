@@ -1,3 +1,11 @@
+struct User{
+    
+    let name: String
+    let password: String
+    let movies: [Movie]
+    let series: [Serie]
+    
+}
 //
 //  User.swift
 //  sweetWatch

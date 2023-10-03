@@ -1,3 +1,12 @@
+struct Serie{
+    
+    let name: String
+    let image: String
+    let resume: String
+    let rating: Float
+    let actors: [Actor]
+    
+}
 //
 //  Serie.swift
 //  sweetWatch

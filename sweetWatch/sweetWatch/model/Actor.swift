@@ -1,3 +1,9 @@
+struct Actor{
+    
+    let name: String
+    let image: String
+    
+}
 //
 //  Actor.swift
 //  sweetWatch
