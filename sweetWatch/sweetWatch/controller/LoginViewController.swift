@@ -49,6 +49,10 @@ class LoginViewController: UIViewController {
           }
 
         print(users)
+        for user in users {
+            print(user.value(forKeyPath: "name"))
+            print(user.value(forKeyPath: "password"))
+        }
     }
     
     @IBAction func toggleLogin(_ sender: Any) {
@@ -63,6 +67,34 @@ class LoginViewController: UIViewController {
 
     
     @IBAction func Connection(_ sender: Any) {
+        var email = emailConnectionField.text ?? ""
+        var password = passwordConnectionField.text ?? ""
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+              return
+          }
+          
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+          
+          //2
+          let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "Users")
+        
+        fetchRequest.predicate = NSPredicate(format: "name == %@ AND password == %@", email, password )
+        
+        do {
+            var user = try managedContext.fetch(fetchRequest)
+            guard user.first != nil else {
+                print("no user found")
+                return
+            }
+            print("username : \(user.first?.value(forKeyPath: "name")), password : \(user.first?.value(forKeyPath: "password"))")
+            
+          } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+          }
+        
     }
     
     @IBAction func SignUp(_ sender: Any) {
