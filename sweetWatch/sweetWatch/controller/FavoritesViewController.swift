@@ -7,10 +7,8 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     var movieList:[Movie] = []
     var serieList:[Serie] = []
-    var listToShow:[Any] = []
     
     @IBOutlet weak var favoritesTableView: UITableView!
-    
     
     @IBOutlet weak var toggleOutlet: UISegmentedControl!
     
@@ -72,19 +70,24 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCellIdentifier", for: indexPath)
-
+        let cell = favoritesTableView.dequeueReusableCell(withIdentifier: "favoriteCellIdentifier", for: indexPath) as! CustomFavoriteCell
+        //make cell rounded
+        cell.favoriteView.layer.cornerRadius = 15
+        cell.favoriteImageView.layer.cornerRadius = 5
+        
         if self.toggleOutlet.selectedSegmentIndex == 0{
-            cell.textLabel?.text = self.movieList[indexPath.row].name
+            cell.favoriteTitleView.text = self.movieList[indexPath.row].name
+            cell.favoriteResumeView.text = self.movieList[indexPath.row].resume
+            cell.favoriteImageView.image = UIImage.img3
         }else{
-            cell.textLabel?.text = self.serieList[indexPath.row].name
+            cell.favoriteTitleView.text = self.serieList[indexPath.row].name
+            cell.favoriteResumeView.text = self.serieList[indexPath.row].resume
+            cell.favoriteImageView.image = UIImage.img4
+            //cell.textLabel?.text = self.serieList[indexPath.row].name
         }
         
         
         
-        if indexPath.row % 2 == 0 {
-            cell.backgroundColor = UIColor.gray
-        }
         // Configure the cell...
 
         return cell
