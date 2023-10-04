@@ -22,6 +22,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordSignUpField: UITextField!
     @IBOutlet weak var emailSignUpField: UITextField!
     
+    @IBOutlet weak var toggleOutlet: UISegmentedControl!
+    
     var users : [NSManagedObject] = []
     
     
@@ -95,6 +97,19 @@ class LoginViewController: UIViewController {
             print("Could not fetch. \(error), \(error.userInfo)")
           }
         
+    }
+    
+    @IBAction func toggleView(_ sender: Any) {
+        switch self.toggleOutlet.selectedSegmentIndex{
+        case 0:
+            self.loginView.isHidden = false
+            self.signUpView.isHidden = true
+        case 1 :
+            self.loginView.isHidden = true
+            self.signUpView.isHidden = false
+        default:
+            break
+        }
     }
     
     @IBAction func SignUp(_ sender: Any) {

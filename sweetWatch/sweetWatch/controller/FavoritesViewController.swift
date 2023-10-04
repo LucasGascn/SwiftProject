@@ -4,23 +4,16 @@ import UIKit
 class FavoritesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
-
-    @IBOutlet weak var seriesTableView: UITableView!
+    @IBOutlet weak var favoritesTableView: UITableView!
     
-    @IBOutlet weak var movieTableView
-    : UITableView!
-    
-    @IBOutlet weak var seriesButton: UIButton!
-    @IBOutlet weak var moviesButton: UIButton!
+    @IBOutlet weak var toggleOutlet: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.movieTableView.delegate = self
-        self.movieTableView.dataSource = self
+        self.favoritesTableView.delegate = self
+        self.favoritesTableView.dataSource = self
         
-        self.seriesTableView.delegate = self
-        self.seriesTableView.dataSource = self
         // Do any additional setup after loading the view.
     }
     
@@ -33,10 +26,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         return UITableViewCell()
     }
     
-    @IBAction func Series(_ sender: Any) {
-    }
-    
-    @IBAction func Movies(_ sender: Any) {
+    @IBAction func toggleTableView(_ sender: Any) {
     }
 
 }
