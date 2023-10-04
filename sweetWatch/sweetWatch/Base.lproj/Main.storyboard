@@ -481,10 +481,10 @@
             </objects>
             <point key="canvasLocation" x="3242" y="780"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar Controller-->
         <scene sceneID="pLx-M2-CRB">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="ccw-HP-f1K" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarController" automaticallyAdjustsScrollViewInsets="NO" id="ccw-HP-f1K" customClass="MainTabBarController" customModule="sweetWatch" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VVO-Jf-ScF">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
