@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1759827D2ACDAB6A00A6A657 /* CustomFavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1759827C2ACDAB6A00A6A657 /* CustomFavoriteCell.swift */; };
 		5983CC1B2ACC09B70023148F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983CC1A2ACC09B70023148F /* AppDelegate.swift */; };
 		5983CC1D2ACC09B70023148F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983CC1C2ACC09B70023148F /* SceneDelegate.swift */; };
 		5983CC1F2ACC09B70023148F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983CC1E2ACC09B70023148F /* ViewController.swift */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1759827C2ACDAB6A00A6A657 /* CustomFavoriteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomFavoriteCell.swift; path = ../../../../../Desktop/CustomFavoriteCell.swift; sourceTree = "<group>"; };
 		5983CC172ACC09B70023148F /* sweetWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sweetWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5983CC1A2ACC09B70023148F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5983CC1C2ACC09B70023148F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +118,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		175982792ACDAB3000A6A657 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				1759827C2ACDAB6A00A6A657 /* CustomFavoriteCell.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		5983CC0E2ACC09B70023148F = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				E493FCB12ACD7AAD00A63965 /* coreDataModel */,
+				175982792ACDAB3000A6A657 /* view */,
 				E493FC952ACC4D4B00A63965 /* controller */,
 				E493FC8A2ACC4C7900A63965 /* model */,
 				5983CC1A2ACC09B70023148F /* AppDelegate.swift */,
@@ -361,10 +372,13 @@
 				E493FC922ACC4CB900A63965 /* Actor.swift in Sources */,
 				E493FCCA2ACD7C1700A63965 /* Movies+CoreDataClass.swift in Sources */,
 				E493FC9C2ACD4CCD00A63965 /* Model.xcdatamodeld in Sources */,
+
 				E493FCD02ACD7C1700A63965 /* Actors+CoreDataClass.swift in Sources */,
 				E493FCCE2ACD7C1700A63965 /* Series+CoreDataClass.swift in Sources */,
 				E493FCCD2ACD7C1700A63965 /* Users+CoreDataProperties.swift in Sources */,
 				E493FCDF2ACD9FB300A63965 /* CustomCollectionViewCell.swift in Sources */,
+
+				1759827D2ACDAB6A00A6A657 /* CustomFavoriteCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
