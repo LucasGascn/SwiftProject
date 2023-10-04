@@ -10,6 +10,9 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var movieTableView
     : UITableView!
     
+    @IBOutlet weak var seriesButton: UIButton!
+    @IBOutlet weak var moviesButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,7 +30,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell
+        return UITableViewCell()
     }
     
     @IBAction func Series(_ sender: Any) {

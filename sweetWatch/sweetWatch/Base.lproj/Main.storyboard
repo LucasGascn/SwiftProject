@@ -426,6 +426,8 @@
                     <tabBarItem key="tabBarItem" title="Item" image="star" catalog="system" id="b0R-FT-cN5"/>
                     <connections>
                         <outlet property="movieTableView" destination="eny-7p-uBD" id="sMS-29-uD4"/>
+                        <outlet property="moviesButton" destination="BfK-gc-6EK" id="nX8-Z5-XvO"/>
+                        <outlet property="seriesButton" destination="Veh-Qn-Hgy" id="lUd-OK-mlj"/>
                         <outlet property="seriesTableView" destination="F2e-bi-3YQ" id="PcM-PG-xvA"/>
                     </connections>
                 </viewController>

@@ -24,6 +24,7 @@
 		E493FC942ACC4CE800A63965 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E493FC932ACC4CE800A63965 /* HomeViewController.swift */; };
 		E493FC972ACC4DBD00A63965 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E493FC962ACC4DBD00A63965 /* SearchViewController.swift */; };
 		E493FC992ACC4E1E00A63965 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E493FC982ACC4E1E00A63965 /* FavoritesViewController.swift */; };
+		E493FC9C2ACD4CCD00A63965 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E493FC9A2ACD4CCD00A63965 /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		E493FC932ACC4CE800A63965 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E493FC962ACC4DBD00A63965 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		E493FC982ACC4E1E00A63965 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		E493FC9B2ACD4CCD00A63965 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				5983CC232ACC09B80023148F /* Assets.xcassets */,
 				5983CC252ACC09B80023148F /* LaunchScreen.storyboard */,
 				5983CC282ACC09B80023148F /* Info.plist */,
+				E493FC9A2ACD4CCD00A63965 /* Model.xcdatamodeld */,
 			);
 			path = sweetWatch;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				E493FC8C2ACC4C8C00A63965 /* User.swift in Sources */,
 				5983CC1D2ACC09B70023148F /* SceneDelegate.swift in Sources */,
 				E493FC922ACC4CB900A63965 /* Actor.swift in Sources */,
+				E493FC9C2ACD4CCD00A63965 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -649,6 +653,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E493FC9A2ACD4CCD00A63965 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E493FC9B2ACD4CCD00A63965 /* Model.xcdatamodel */,
+			);
+			currentVersion = E493FC9B2ACD4CCD00A63965 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5983CC0F2ACC09B70023148F /* Project object */;
 }
