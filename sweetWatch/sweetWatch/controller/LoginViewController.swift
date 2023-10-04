@@ -22,6 +22,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordSignUpField: UITextField!
     @IBOutlet weak var emailSignUpField: UITextField!
     
+    @IBOutlet weak var toggleOutlet: UISegmentedControl!
+    
     var users : [NSManagedObject] = []
     
     
@@ -49,6 +51,10 @@ class LoginViewController: UIViewController {
           }
 
         print(users)
+        for user in users {
+            print(user.value(forKeyPath: "name"))
+            print(user.value(forKeyPath: "password"))
+        }
     }
     
     @IBAction func toggleLogin(_ sender: Any) {
@@ -63,6 +69,47 @@ class LoginViewController: UIViewController {
 
     
     @IBAction func Connection(_ sender: Any) {
+        var email = emailConnectionField.text ?? ""
+        var password = passwordConnectionField.text ?? ""
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+              return
+          }
+          
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+          
+          //2
+          let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "Users")
+        
+        fetchRequest.predicate = NSPredicate(format: "name == %@ AND password == %@", email, password )
+        
+        do {
+            var user = try managedContext.fetch(fetchRequest)
+            guard user.first != nil else {
+                print("no user found")
+                return
+            }
+            print("username : \(user.first?.value(forKeyPath: "name")), password : \(user.first?.value(forKeyPath: "password"))")
+            
+          } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+          }
+        
+    }
+    
+    @IBAction func toggleView(_ sender: Any) {
+        switch self.toggleOutlet.selectedSegmentIndex{
+        case 0:
+            self.loginView.isHidden = false
+            self.signUpView.isHidden = true
+        case 1 :
+            self.loginView.isHidden = true
+            self.signUpView.isHidden = false
+        default:
+            break
+        }
     }
     
     @IBAction func SignUp(_ sender: Any) {

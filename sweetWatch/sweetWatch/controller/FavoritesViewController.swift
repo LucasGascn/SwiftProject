@@ -3,22 +3,21 @@ import UIKit
 
 class FavoritesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-   
+    
     
     var movieList:[Movie] = []
+    var serieList:[Serie] = []
+    var listToShow:[Any] = []
     
-    @IBOutlet weak var seriesTableView: UITableView!
+    @IBOutlet weak var favoritesTableView: UITableView!
     
-    @IBOutlet weak var movieTableView
-    : UITableView!
     
-    @IBOutlet weak var seriesButton: UIButton!
-    @IBOutlet weak var moviesButton: UIButton!
+    @IBOutlet weak var toggleOutlet: UISegmentedControl!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         //JEU DE DONNEE TEST
         let movie1 = Movie(
             name: "film1",
@@ -34,46 +33,67 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
             rating: 2.2,
             actors: [Actor(name: "john wick2", image: "image john2")]
         )
+        let serie1 = Serie(
+            name: "serie1",
+            image: "image serie1",
+            resume: "resumeserie1",
+            rating: 4.2,
+            actors: [Actor(name: "john wick", image: "image john")]
+        )
+        let serie2 = Serie(
+            name: "serie2",
+            image: "image serie2",
+            resume: "resumeserie2",
+            rating: 2.2,
+            actors: [Actor(name: "john wick2", image: "image john2")]
+        )
+        self.serieList = [serie1,serie2]
         self.movieList = [movie1,movie2]
-
         
-        self.movieTableView.delegate = self
-        self.movieTableView.dataSource = self
         
-        self.seriesTableView.delegate = self
-        self.seriesTableView.dataSource = self
+        self.favoritesTableView.delegate = self
+        self.favoritesTableView.dataSource = self
+        
         // Do any additional setup after loading the view.
         
         
-              
     }
     
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if self.toggleOutlet.selectedSegmentIndex == 0{
+            return self.movieList.count
+        }else{
+            return self.serieList.count
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
-    }
-    
-    
-    @IBAction func Series(_ sender: Any) {
-        self.seriesTableView.isHidden = false
-        self.movieTableView.isHidden = true
-        
-        self.moviesButton.backgroundColor = .clear
-        self.seriesButton.backgroundColor = UIColor.systemYellow.withAlphaComponent(0.2)
-        self.seriesButton.layer.cornerRadius = 10
-    }
-    
-    @IBAction func Movies(_ sender: Any) {
-        self.movieTableView.isHidden = false
-        self.seriesTableView.isHidden = true
-        
-        self.seriesButton.backgroundColor = .clear
-        self.moviesButton.backgroundColor = UIColor.systemYellow.withAlphaComponent(0.2)
-        self.moviesButton.layer.cornerRadius = 10
-    }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCellIdentifier", for: indexPath)
 
+        if self.toggleOutlet.selectedSegmentIndex == 0{
+            cell.textLabel?.text = self.movieList[indexPath.row].name
+        }else{
+            cell.textLabel?.text = self.serieList[indexPath.row].name
+        }
+        
+        
+        
+        if indexPath.row % 2 == 0 {
+            cell.backgroundColor = UIColor.gray
+        }
+        // Configure the cell...
+
+        return cell
+    }
+    
+    
+    
+    @IBAction func toggleTableView(_ sender: Any) {
+        self.favoritesTableView.reloadData()
+    }
+        
 }
