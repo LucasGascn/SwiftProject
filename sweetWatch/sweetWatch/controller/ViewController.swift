@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var button: UIButton!
+    
+//    var container: NSPersistentContainer!
 
     
     override func viewDidLoad() {
@@ -19,8 +22,17 @@ class ViewController: UIViewController {
         let timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { timer in
             self.ChangeBackground()
         }
+//        guard container != nil else {
+//                    fatalError("This view needs a persistent container.")
+//                }
     }
     
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//            if let nextVC = segue.destination as? LoginViewController {
+//                nextVC.container = container
+//            }
+//        }
+//    
     func ChangeBackground() {
         let imgNumber = Int.random(in: 1..<10)
         
