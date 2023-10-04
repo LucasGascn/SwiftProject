@@ -31,9 +31,13 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @IBAction func Series(_ sender: Any) {
+        self.seriesTableView.isHidden = false
+        self.movieTableView.isHidden = true
     }
     
     @IBAction func Movies(_ sender: Any) {
+        self.movieTableView.isHidden = false
+        self.seriesTableView.isHidden = true
     }
 
 }
