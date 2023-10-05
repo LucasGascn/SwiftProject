@@ -9,7 +9,7 @@ import UIKit
 import Foundation
 
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var imageView: UIImageView!
     
@@ -30,10 +30,17 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var genreContentLabel: UILabel!
     
     @IBOutlet weak var detailButton: UIButton!
+    
+    @IBOutlet weak var actorsCollectionView: UICollectionView!
+    
+    
     //navigation variable
     var searchType: String = ""
     var searchId: Int = 0
     var canBeDeleted = false
+    
+    //JULES création du tableau actors VIDE
+    var actors:[Actor] = []
     
     struct ItemToDisplay{
         var id: Int
@@ -52,6 +59,22 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //JULES : COPIE DE CE QUE TU AVAIS FAIT EN ADAPTANT
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right:20)
+        layout.minimumInteritemSpacing = 30
+        
+        self.actorsCollectionView.setCollectionViewLayout(layout, animated: true)
+        self.actorsCollectionView.dataSource = self
+        self.actorsCollectionView.delegate = self
+        
+        
+        
+        
+        self.actorsCollectionView.register(UINib(nibName:"ActorsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier:CustomCollectionViewCell.identifier)
+        
+        
         // Do any additional setup after loading the view.
         
         if canBeDeleted {
@@ -64,14 +87,14 @@ class DetailViewController: UIViewController {
           "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxODQyNTJmYjRjNDVkMzE4ZjE1NGQwNzIzOTYzZmRjNiIsInN1YiI6IjY1MWJjYzA5NjcyOGE4MDEzYzQxNzI5ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xtWVRlxeUp42ahtck_sWoi1EtkR6hL16hBCRRsOztUk"
         ]
 
-        let request = NSMutableURLRequest(url: NSURL(string: "https://api.themoviedb.org/3/\(searchType)/\(self.searchId)?language=en-US")! as URL,
+        var request = NSMutableURLRequest(url: NSURL(string: "https://api.themoviedb.org/3/\(searchType)/\(self.searchId)?language=en-US")! as URL,
                                                 cachePolicy: .useProtocolCachePolicy,
                                             timeoutInterval: 10.0)
         request.httpMethod = "GET"
         request.allHTTPHeaderFields = headers
 
         let session = URLSession.shared
-        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+        var dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
           if (error != nil) {
             print(error as Any)
           } else {
@@ -99,7 +122,7 @@ class DetailViewController: UIViewController {
                           }
                       }
                       
-                      
+                                
                     //LOAD DATA IN VIEW
                       DispatchQueue.main.async {
                           self.titleLabel.text = self.itemToDisplay.title
@@ -115,10 +138,67 @@ class DetailViewController: UIViewController {
               }
           }
         })
+        
+        //JULES ICI LA REQUETE POUR RECUP LES ACTEURS DU FILM
+        //AVEC CREATTION DU TABLEAU actors
+        request = NSMutableURLRequest(url: NSURL(string: "https://api.themoviedb.org/3/\(searchType)/\(self.searchId)/credits?language=en-US")! as URL,
+                                                cachePolicy: .useProtocolCachePolicy,
+                                            timeoutInterval: 10.0)
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+        dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            if (error != nil) {
+                print(error as Any)
+            } else {
+                if let json = try? JSONSerialization.jsonObject(with: data!, options: .mutableContainers) {
+                    if let data = json as? [String:AnyObject] {
+                        if let items = data["crew"] as? [[String : AnyObject]]{
+                            //print(items)
+                            for item in items {
+                                let id = item["id"] as? Int
+                                let name = item["name"] as? String
+                                let image = item["profil_path"] as? String
+                                let actor = Actor(id: id ?? 0, name: "", image: image ?? "")
+                                self.actors.append(actor)
+                                
+                            }
+                        }
+                    }
+                }
+                DispatchQueue.main.async {
+                    self.actorsCollectionView.reloadData()
+                }
+            }
+        })
 
         dataTask.resume()
         
     }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(actors.count)
+        return actors.count
+    
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = self.actorsCollectionView.dequeueReusableCell(withReuseIdentifier: ActorsCollectionViewCell.identifier, for: indexPath) as? ActorsCollectionViewCell else {
+            fatalError("failed")
+        }
+        
+        cell.layer.cornerRadius = 10
+        
+        
+        cell.configure(image: "https://www.themoviedb.org/t/p/w1280/\(actors[indexPath.item].image)")
+        
+        return cell
+    }
+    
+    
+    
+    
+    
 
     
     @IBAction func addToWatchlistAction(_ sender: Any) {
@@ -187,3 +267,27 @@ class DetailViewController: UIViewController {
     
 
 }
+
+
+// JULES ICI AUSSI COPI
+extension DetailViewController: UICollectionViewDelegateFlowLayout {
+        func collectionView(_ collectionView: UICollectionView,
+                            layout collectionViewLayout: UICollectionViewLayout,
+                            sizeForItemAt indexPath: IndexPath) -> CGSize {
+            return CGSize(width: 180.0, height: 260.0)
+
+
+        }
+
+        func collectionView(_ collectionView: UICollectionView,
+                            layout collectionViewLayout: UICollectionViewLayout,
+                            minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+            return 1.0
+        }
+
+        func collectionView(_ collectionView: UICollectionView, layout
+            collectionViewLayout: UICollectionViewLayout,
+                            minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+            return 30.0
+        }
+    }

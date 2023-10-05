@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		175982872ACDBFD700A6A657 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175982862ACDBFD700A6A657 /* DetailViewController.swift */; };
+		1759828D2ACF3FD500A6A657 /* ActorsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1759828B2ACF3FD500A6A657 /* ActorsCollectionViewCell.swift */; };
+		1759828E2ACF3FD500A6A657 /* ActorsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1759828C2ACF3FD500A6A657 /* ActorsCollectionViewCell.xib */; };
 		5983CC1B2ACC09B70023148F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983CC1A2ACC09B70023148F /* AppDelegate.swift */; };
 		5983CC1D2ACC09B70023148F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983CC1C2ACC09B70023148F /* SceneDelegate.swift */; };
 		5983CC1F2ACC09B70023148F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983CC1E2ACC09B70023148F /* ViewController.swift */; };
@@ -59,6 +61,8 @@
 
 /* Begin PBXFileReference section */
 		175982862ACDBFD700A6A657 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		1759828B2ACF3FD500A6A657 /* ActorsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorsCollectionViewCell.swift; sourceTree = "<group>"; };
+		1759828C2ACF3FD500A6A657 /* ActorsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActorsCollectionViewCell.xib; sourceTree = "<group>"; };
 		5983CC172ACC09B70023148F /* sweetWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sweetWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5983CC1A2ACC09B70023148F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5983CC1C2ACC09B70023148F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -164,6 +168,8 @@
 				E493FC9A2ACD4CCD00A63965 /* Model.xcdatamodeld */,
 				E493FC9F2ACD70D500A63965 /* CoreDataManager.swift */,
 				E493FCDD2ACD9FB300A63965 /* CustomCollectionViewCell.swift */,
+				1759828B2ACF3FD500A6A657 /* ActorsCollectionViewCell.swift */,
+				1759828C2ACF3FD500A6A657 /* ActorsCollectionViewCell.xib */,
 				E493FCDE2ACD9FB300A63965 /* CustomCollectionViewCell.xib */,
 			);
 			path = sweetWatch;
@@ -332,6 +338,7 @@
 				5983CC272ACC09B80023148F /* LaunchScreen.storyboard in Resources */,
 				5983CC242ACC09B80023148F /* Assets.xcassets in Resources */,
 				5983CC222ACC09B70023148F /* Main.storyboard in Resources */,
+				1759828E2ACF3FD500A6A657 /* ActorsCollectionViewCell.xib in Resources */,
 				E493FCE02ACD9FB300A63965 /* CustomCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,6 +378,7 @@
 				E493FC8C2ACC4C8C00A63965 /* User.swift in Sources */,
 				5983CC1D2ACC09B70023148F /* SceneDelegate.swift in Sources */,
 				E493FCD12ACD7C1700A63965 /* Actors+CoreDataProperties.swift in Sources */,
+				1759828D2ACF3FD500A6A657 /* ActorsCollectionViewCell.swift in Sources */,
 				E4374A612ACEBAAF00466396 /* CustomFavoriteCell.swift in Sources */,
 				E493FCCF2ACD7C1700A63965 /* Series+CoreDataProperties.swift in Sources */,
 				175982872ACDBFD700A6A657 /* DetailViewController.swift in Sources */,
