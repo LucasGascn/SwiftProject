@@ -101,15 +101,23 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         })
         dataTask.resume()
     }
+    
+    func tcheckSearchBar(){
+        if let searchText = searchBar.text, !searchText.isEmpty {
+                    searchBar(searchBar, textDidChange: searchText)
+                } else {
+                    popularMovie()
+                }
+    }
     @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             selectedCategory = "movie"
             movies.removeAll()
-            popularMovie()
+            tcheckSearchBar()
         } else if sender.selectedSegmentIndex == 1 {
             selectedCategory = "tv" // Pour les séries
             movies.removeAll()
-            popularMovie()
+            tcheckSearchBar()
         }
     }
     override func viewDidLoad() {
