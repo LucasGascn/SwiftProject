@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="D9W-do-hpx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
@@ -321,10 +321,11 @@
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="mqR-gp-hSW" customClass="CustomCollectionViewCell" customModule="sweetWatch" customModuleProvider="target">
                                         <rect key="frame" x="56.666666666666664" y="0.0" width="280" height="240"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="P8W-W7-aMS">
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="280" height="240"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
+                                        </view>
+                                        <size key="customSize" width="280" height="240"/>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -349,6 +350,7 @@
                     <tabBarItem key="tabBarItem" title="Item" image="house" catalog="system" id="NfA-ZX-jgF"/>
                     <connections>
                         <outlet property="moviesCollectionView" destination="h5I-bc-kEw" id="Lij-Ig-kzs"/>
+                        <outlet property="seriesCollectionView" destination="dXS-fe-ECv" id="cbF-V6-Mp8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bQg-8O-Usa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -488,15 +490,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="5gx-Na-VSl">
-                                <rect key="frame" x="0.0" y="79" width="393" height="40"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="dGG-jg-kAG" id="j5K-fa-2aa"/>
-                                </connections>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kSR-IE-wvn">
-                                <rect key="frame" x="0.0" y="179" width="393" height="590"/>
+                                <rect key="frame" x="0.0" y="195" width="393" height="574"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PosterCell" id="P03-Dm-Wg7">
@@ -517,18 +512,43 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eUA-I0-Ws2">
+                                <rect key="frame" x="46" y="59" width="300" height="32"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="3lQ-pY-fHf"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Movies"/>
+                                    <segment title="Series"/>
+                                </segments>
+                                <connections>
+                                    <action selector="toggleTableView:" destination="jDh-Mz-Zwc" eventType="valueChanged" id="uaV-c8-OvF"/>
+                                </connections>
+                            </segmentedControl>
+                            <searchBar contentMode="redraw" text="" translatesAutoresizingMaskIntoConstraints="NO" id="5gx-Na-VSl">
+                                <rect key="frame" x="0.0" y="112" width="393" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="dGG-jg-kAG" id="j5K-fa-2aa"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dJB-Q3-BAC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="kSR-IE-wvn" firstAttribute="leading" secondItem="dJB-Q3-BAC" secondAttribute="leading" id="1wB-op-8pv"/>
-                            <constraint firstItem="dJB-Q3-BAC" firstAttribute="trailing" secondItem="5gx-Na-VSl" secondAttribute="trailing" id="6p2-RF-niJ"/>
-                            <constraint firstItem="5gx-Na-VSl" firstAttribute="top" secondItem="dJB-Q3-BAC" secondAttribute="top" constant="20" id="CFz-6p-N9z"/>
+                            <constraint firstItem="eUA-I0-Ws2" firstAttribute="leading" secondItem="dJB-Q3-BAC" secondAttribute="leading" constant="46" id="60Q-qu-U84"/>
+                            <constraint firstItem="eUA-I0-Ws2" firstAttribute="top" secondItem="dJB-Q3-BAC" secondAttribute="top" id="9B0-fS-oEa"/>
                             <constraint firstItem="dJB-Q3-BAC" firstAttribute="trailing" secondItem="kSR-IE-wvn" secondAttribute="trailing" id="Czh-Hu-GSU"/>
-                            <constraint firstItem="5gx-Na-VSl" firstAttribute="leading" secondItem="dJB-Q3-BAC" secondAttribute="leading" id="J9v-rt-zy6"/>
-                            <constraint firstItem="kSR-IE-wvn" firstAttribute="top" secondItem="5gx-Na-VSl" secondAttribute="bottom" constant="60" id="Jv5-rB-DUh"/>
-                            <constraint firstItem="dJB-Q3-BAC" firstAttribute="bottom" secondItem="5gx-Na-VSl" secondAttribute="bottom" constant="650" id="e9l-1x-7HU"/>
+                            <constraint firstItem="kSR-IE-wvn" firstAttribute="top" secondItem="5gx-Na-VSl" secondAttribute="bottom" constant="27" id="GEc-xY-e1r"/>
+                            <constraint firstItem="5gx-Na-VSl" firstAttribute="leading" secondItem="dJB-Q3-BAC" secondAttribute="leading" id="PLX-bU-X8m"/>
+                            <constraint firstItem="dJB-Q3-BAC" firstAttribute="bottom" secondItem="5gx-Na-VSl" secondAttribute="bottom" constant="601" id="R0e-yi-lKb"/>
+                            <constraint firstItem="dJB-Q3-BAC" firstAttribute="bottom" secondItem="kSR-IE-wvn" secondAttribute="bottom" id="aO2-rn-Ih9"/>
+                            <constraint firstItem="5gx-Na-VSl" firstAttribute="width" secondItem="ccj-3O-fVY" secondAttribute="width" id="dXc-IY-6kb"/>
+                            <constraint firstItem="5gx-Na-VSl" firstAttribute="top" secondItem="eUA-I0-Ws2" secondAttribute="bottom" constant="22" id="iNb-rq-jAT"/>
                             <constraint firstItem="dJB-Q3-BAC" firstAttribute="bottom" secondItem="kSR-IE-wvn" secondAttribute="bottom" id="oNj-xN-uGg"/>
+                            <constraint firstItem="dJB-Q3-BAC" firstAttribute="trailing" secondItem="eUA-I0-Ws2" secondAttribute="trailing" constant="47" id="tcS-bp-ogV"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" image="magnifyingglass" catalog="system" id="m3k-Zf-1YZ"/>
@@ -539,12 +559,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JtI-Zb-28h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3242" y="780"/>
+            <point key="canvasLocation" x="3241.9847328244273" y="779.57746478873241"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="Dn6-XD-Tme">
             <objects>
-                <viewController id="D9W-do-hpx" customClass="DetailViewController" customModule="sweetWatch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detailView" id="D9W-do-hpx" customClass="DetailViewController" customModule="sweetWatch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FwX-Ja-jys">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="1100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -740,7 +760,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
