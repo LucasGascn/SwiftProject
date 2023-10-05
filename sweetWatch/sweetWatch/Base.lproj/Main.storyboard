@@ -555,6 +555,7 @@
                     <connections>
                         <outlet property="searchBar" destination="5gx-Na-VSl" id="3N6-8w-HrB"/>
                         <outlet property="searchTableView" destination="kSR-IE-wvn" id="ZNi-lV-glf"/>
+                        <outlet property="toggleButton" destination="eUA-I0-Ws2" id="D3B-c7-oSD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JtI-Zb-28h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -26,22 +26,20 @@ extension UIImageView {
 
 class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate  {
     
-
-    @IBOutlet weak var searchBar: UISearchBar!
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var toggleButton: UISegmentedControl!
     @IBOutlet weak var searchTableView: UITableView!
-
+    
     struct Movie {
         let title: String
         let posterPath: String
         let id: Int
     }
     var movies: [Movie] = []
+    var selectedCategory: String = "movie" // Par défaut, recherche de films
 
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    func popularMovie(){
         self.searchTableView.delegate = self
         self.searchTableView.dataSource = self
         
@@ -50,15 +48,14 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
           "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxODQyNTJmYjRjNDVkMzE4ZjE1NGQwNzIzOTYzZmRjNiIsInN1YiI6IjY1MWJjYzA5NjcyOGE4MDEzYzQxNzI5ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xtWVRlxeUp42ahtck_sWoi1EtkR6hL16hBCRRsOztUk"
         ]
         
-        let request = NSMutableURLRequest(url: NSURL(string: "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1")! as URL,
-                                                cachePolicy: .useProtocolCachePolicy,
-                                            timeoutInterval: 10.0)
+        let request = NSMutableURLRequest(url: NSURL(string: "https://api.themoviedb.org/3/\(selectedCategory)/popular?language=en-US&page=1")! as URL,
+                                          cachePolicy: .useProtocolCachePolicy,
+                                          timeoutInterval: 10.0)
         request.httpMethod = "GET"
         request.allHTTPHeaderFields = headers
-
-
+        
         let session = URLSession.shared
-
+        
         let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
             if let error = error {
                 print("Erreur : \(error)")
@@ -66,10 +63,21 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
                        let results = json["results"] as? [[String: Any]] {
-                        
+                        print(results)
                         var moviesArray: [Movie] = []
                         for result in results {
                             if let title = result["title"] as? String,
+                               let posterPath = result["poster_path"] as? String,
+                               let id = result["id"] as? Int
+                            {
+                                
+                                let movie = Movie(title: title, posterPath: posterPath, id: id)
+                                moviesArray.append(movie)
+                                print(movie)
+                                
+                            }
+                            
+                           else if let title = result["name"] as? String,
                                let posterPath = result["poster_path"] as? String,
                                let id = result["id"] as? Int
                             {
@@ -93,6 +101,24 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         })
         dataTask.resume()
     }
+    @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            selectedCategory = "movie"
+            movies.removeAll()
+            popularMovie()
+        } else if sender.selectedSegmentIndex == 1 {
+            selectedCategory = "tv" // Pour les séries
+            movies.removeAll()
+            popularMovie()
+        }
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        toggleButton.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
+        popularMovie()
+    }
+    
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -108,6 +134,66 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
+        
+        movies.removeAll()
+        
+        if (searchText.isEmpty){
+            popularMovie()
+        }else{
+            let headers = [
+                "accept": "application/json",
+                "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxODQyNTJmYjRjNDVkMzE4ZjE1NGQwNzIzOTYzZmRjNiIsInN1YiI6IjY1MWJjYzA5NjcyOGE4MDEzYzQxNzI5ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xtWVRlxeUp42ahtck_sWoi1EtkR6hL16hBCRRsOztUk"
+            ]
+            
+            let request = NSMutableURLRequest(url: NSURL(string: "https://api.themoviedb.org/3/search/\(selectedCategory)?query=\(searchText)&include_adult=false&language=en-US&page=1")! as URL,
+                                              cachePolicy: .useProtocolCachePolicy,
+                                              timeoutInterval: 10.0)
+            request.httpMethod = "GET"
+            request.allHTTPHeaderFields = headers
+            
+            let session = URLSession.shared
+            let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+                if (error != nil) {
+                    print(error as Any)
+                } else if let data = data {
+                    do {
+                        if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                           let results = json["results"] as? [[String: Any]] {
+                            
+                            var moviesArray: [Movie] = []
+                            for result in results {
+                                if let title = result["title"] as? String,
+                                   let posterPath = result["poster_path"] as? String,
+                                   let id = result["id"] as? Int
+                                {
+                                    
+                                    let movie = Movie(title: title, posterPath: posterPath, id: id)
+                                    moviesArray.append(movie)
+                                    print(movie)
+                                }
+                                else if let title = result["name"] as? String,
+                                    let posterPath = result["poster_path"] as? String,
+                                    let id = result["id"] as? Int
+                                 {
+                                     
+                                     let movie = Movie(title: title, posterPath: posterPath, id: id)
+                                     moviesArray.append(movie)
+                                     print(movie)
+                                     
+                                 }
+                                
+                            }
+                            DispatchQueue.main.async {
+                                self.movies = moviesArray
+                                self.searchTableView.reloadData()
+                            }
+                        }
+                    } catch {
+                        print("Erreur lors de l'analyse JSON : \(error)")
+                    }
+                }
+            })
+            dataTask.resume()
+        }
     }
 }
