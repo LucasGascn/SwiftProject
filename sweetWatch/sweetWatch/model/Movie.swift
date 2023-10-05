@@ -1,9 +1,9 @@
 struct Movie{
-    
+    let id: Int
     let name: String
     let image: String
     let resume: String
-    let rating: Float
+    let rating: Double
     let actors: [Actor]
     
 }
