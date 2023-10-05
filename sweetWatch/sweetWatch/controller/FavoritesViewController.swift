@@ -96,7 +96,20 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "detailView") as? DetailViewController {
+            
+            //Afficher une modal
+            vc.searchId = 114461
+            vc.searchType = self.toggleOutlet.selectedSegmentIndex == 0 ? "movie" : "tv"
+            //self.navigateur[indexPath.row].urlPage
+            //vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true, completion: nil)
+            
+            //Afficher push navigation
+            //self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
     
     @IBAction func toggleTableView(_ sender: Any) {
         self.favoritesTableView.reloadData()
