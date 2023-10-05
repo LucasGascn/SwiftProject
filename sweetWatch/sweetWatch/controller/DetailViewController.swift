@@ -9,7 +9,6 @@ import UIKit
 import Foundation
 
 
-
 class DetailViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
