@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1759827D2ACDAB6A00A6A657 /* CustomFavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1759827C2ACDAB6A00A6A657 /* CustomFavoriteCell.swift */; };
 		5983CC1B2ACC09B70023148F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983CC1A2ACC09B70023148F /* AppDelegate.swift */; };
 		5983CC1D2ACC09B70023148F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983CC1C2ACC09B70023148F /* SceneDelegate.swift */; };
 		5983CC1F2ACC09B70023148F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983CC1E2ACC09B70023148F /* ViewController.swift */; };
@@ -17,6 +16,7 @@
 		5983CC322ACC09B90023148F /* sweetWatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983CC312ACC09B90023148F /* sweetWatchTests.swift */; };
 		5983CC3C2ACC09B90023148F /* sweetWatchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983CC3B2ACC09B90023148F /* sweetWatchUITests.swift */; };
 		5983CC3E2ACC09B90023148F /* sweetWatchUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983CC3D2ACC09B90023148F /* sweetWatchUITestsLaunchTests.swift */; };
+		E4374A612ACEBAAF00466396 /* CustomFavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4374A602ACEBAAF00466396 /* CustomFavoriteCell.swift */; };
 		E493FC892ACC217900A63965 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E493FC882ACC217900A63965 /* LoginViewController.swift */; };
 		E493FC8C2ACC4C8C00A63965 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E493FC8B2ACC4C8C00A63965 /* User.swift */; };
 		E493FC8E2ACC4C9A00A63965 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = E493FC8D2ACC4C9A00A63965 /* Movie.swift */; };
@@ -57,7 +57,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1759827C2ACDAB6A00A6A657 /* CustomFavoriteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomFavoriteCell.swift; path = ../../../../../Desktop/CustomFavoriteCell.swift; sourceTree = "<group>"; };
 		5983CC172ACC09B70023148F /* sweetWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sweetWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5983CC1A2ACC09B70023148F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5983CC1C2ACC09B70023148F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +70,7 @@
 		5983CC372ACC09B90023148F /* sweetWatchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sweetWatchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5983CC3B2ACC09B90023148F /* sweetWatchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sweetWatchUITests.swift; sourceTree = "<group>"; };
 		5983CC3D2ACC09B90023148F /* sweetWatchUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sweetWatchUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E4374A602ACEBAAF00466396 /* CustomFavoriteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomFavoriteCell.swift; sourceTree = "<group>"; };
 		E493FC882ACC217900A63965 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E493FC8B2ACC4C8C00A63965 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E493FC8D2ACC4C9A00A63965 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 		175982792ACDAB3000A6A657 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				1759827C2ACDAB6A00A6A657 /* CustomFavoriteCell.swift */,
+				E4374A602ACEBAAF00466396 /* CustomFavoriteCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -368,17 +368,15 @@
 				E493FC8C2ACC4C8C00A63965 /* User.swift in Sources */,
 				5983CC1D2ACC09B70023148F /* SceneDelegate.swift in Sources */,
 				E493FCD12ACD7C1700A63965 /* Actors+CoreDataProperties.swift in Sources */,
+				E4374A612ACEBAAF00466396 /* CustomFavoriteCell.swift in Sources */,
 				E493FCCF2ACD7C1700A63965 /* Series+CoreDataProperties.swift in Sources */,
 				E493FC922ACC4CB900A63965 /* Actor.swift in Sources */,
 				E493FCCA2ACD7C1700A63965 /* Movies+CoreDataClass.swift in Sources */,
 				E493FC9C2ACD4CCD00A63965 /* Model.xcdatamodeld in Sources */,
-
 				E493FCD02ACD7C1700A63965 /* Actors+CoreDataClass.swift in Sources */,
 				E493FCCE2ACD7C1700A63965 /* Series+CoreDataClass.swift in Sources */,
 				E493FCCD2ACD7C1700A63965 /* Users+CoreDataProperties.swift in Sources */,
 				E493FCDF2ACD9FB300A63965 /* CustomCollectionViewCell.swift in Sources */,
-
-				1759827D2ACDAB6A00A6A657 /* CustomFavoriteCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -560,6 +558,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NK6NPWFG8P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = sweetWatch/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -587,6 +586,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NK6NPWFG8P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = sweetWatch/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
