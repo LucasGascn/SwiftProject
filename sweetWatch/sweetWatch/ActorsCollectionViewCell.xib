@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,27 +20,39 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xKJ-OI-Xag">
                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgG-vP-R99">
-                        <rect key="frame" x="29" y="59" width="42" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgG-vP-R99">
+                        <rect key="frame" x="0.0" y="150" width="100" height="25"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                        <color key="textColor" systemColor="tableBackgroundColor"/>
                         <nil key="highlightedColor"/>
+                        <color key="shadowColor" systemColor="labelColor"/>
                     </label>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
+                <constraint firstItem="LgG-vP-R99" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="7od-OC-GBU"/>
+                <constraint firstAttribute="bottom" secondItem="LgG-vP-R99" secondAttribute="bottom" id="FWA-aq-xUb"/>
                 <constraint firstAttribute="bottom" secondItem="xKJ-OI-Xag" secondAttribute="bottom" id="cLh-Si-KMl"/>
                 <constraint firstItem="xKJ-OI-Xag" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="daN-bO-hjh"/>
                 <constraint firstAttribute="trailing" secondItem="xKJ-OI-Xag" secondAttribute="trailing" id="hka-LH-aiM"/>
                 <constraint firstItem="xKJ-OI-Xag" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="j3U-Je-48E"/>
+                <constraint firstAttribute="trailing" secondItem="LgG-vP-R99" secondAttribute="trailing" id="okl-Nd-rbT"/>
+                <constraint firstItem="LgG-vP-R99" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="150" id="siN-dv-01F"/>
             </constraints>
             <connections>
                 <outlet property="actorsNameLabel" destination="LgG-vP-R99" id="BO3-Rh-JAq"/>
                 <outlet property="actorsViewCell" destination="xKJ-OI-Xag" id="xNe-1z-suW"/>
             </connections>
-            <point key="canvasLocation" x="43" y="20"/>
+            <point key="canvasLocation" x="42.748091603053432" y="19.718309859154932"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tableBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

@@ -106,7 +106,7 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
                                 let id = item["id"] as? Int
                                 let name = item["name"] as? String
                                 let image = item["profile_path"] as? String
-                                let actor = Actor(id: id ?? 0, name: "", image: image ?? "")
+                                let actor = Actor(id: id ?? 0, name: name ?? "", image: image ?? "")
                                 self.actors.append(actor)
                                 
                             }
@@ -178,7 +178,6 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(actors.count)
         return actors.count
     
     }
@@ -190,8 +189,9 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         cell.layer.cornerRadius = 10
         
-        
+        print()
         cell.configure(image: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2\(actors[indexPath.item].image)")
+        cell.actorsNameLabel.text = actors[indexPath.item].name
         return cell
     }
     

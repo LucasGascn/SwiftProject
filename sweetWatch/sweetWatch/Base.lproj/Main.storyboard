@@ -267,7 +267,7 @@
             </objects>
             <point key="canvasLocation" x="1258.7786259541983" y="3.5211267605633805"/>
         </scene>
-        <!--Item-->
+        <!--Home-->
         <scene sceneID="REr-JA-SAo">
             <objects>
                 <viewController storyboardIdentifier="home" id="Dsj-9f-lWK" customClass="HomeViewController" customModule="sweetWatch" customModuleProvider="target" sceneMemberID="viewController">
@@ -278,12 +278,12 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trending Movie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhF-NQ-0mD">
                                 <rect key="frame" x="138" y="70" width="117" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" systemColor="systemYellowColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="h5I-bc-kEw">
                                 <rect key="frame" x="0.0" y="111" width="393" height="258"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="20" minimumInteritemSpacing="30" id="clM-zb-Qrc">
                                     <size key="itemSize" width="280" height="240"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -305,12 +305,12 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trending Series" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8b-fR-ayV">
                                 <rect key="frame" x="137" y="389" width="119" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" systemColor="systemYellowColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dXS-fe-ECv">
                                 <rect key="frame" x="0.0" y="430" width="393" height="258"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="5" id="H7N-ZK-WpL">
                                     <size key="itemSize" width="280" height="240"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -331,7 +331,7 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aL2-CV-7au"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="lhF-NQ-0mD" firstAttribute="centerX" secondItem="aL2-CV-7au" secondAttribute="centerX" id="45b-UZ-s6v"/>
                             <constraint firstItem="dXS-fe-ECv" firstAttribute="leading" secondItem="aL2-CV-7au" secondAttribute="leading" id="5Qy-74-kwP"/>
@@ -347,7 +347,7 @@
                             <constraint firstItem="h5I-bc-kEw" firstAttribute="leading" secondItem="aL2-CV-7au" secondAttribute="leading" id="vYd-hh-rnZ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="house" catalog="system" id="NfA-ZX-jgF"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="NfA-ZX-jgF"/>
                     <connections>
                         <outlet property="moviesCollectionView" destination="h5I-bc-kEw" id="Lij-Ig-kzs"/>
                         <outlet property="seriesCollectionView" destination="dXS-fe-ECv" id="cbF-V6-Mp8"/>
@@ -357,7 +357,7 @@
             </objects>
             <point key="canvasLocation" x="3324.4274809160306" y="3.5211267605633805"/>
         </scene>
-        <!--Item-->
+        <!--Favorites-->
         <scene sceneID="1ej-n9-GDX">
             <objects>
                 <viewController storyboardIdentifier="favorites" id="jDh-Mz-Zwc" customClass="FavoritesViewController" customModule="sweetWatch" customModuleProvider="target" sceneMemberID="viewController">
@@ -472,7 +472,7 @@
                             <constraint firstItem="IJS-5D-4uj" firstAttribute="trailing" secondItem="cdI-el-7eE" secondAttribute="trailing" id="tAV-wj-EHh"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="star" catalog="system" id="b0R-FT-cN5"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="star" catalog="system" id="b0R-FT-cN5"/>
                     <connections>
                         <outlet property="favoritesTableView" destination="F2e-bi-3YQ" id="Rgq-ef-X1s"/>
                         <outlet property="toggleOutlet" destination="XDX-XS-WNX" id="L9b-of-pUC"/>
@@ -482,7 +482,7 @@
             </objects>
             <point key="canvasLocation" x="2104.5801526717555" y="779.57746478873241"/>
         </scene>
-        <!--Item-->
+        <!--Search View Controller-->
         <scene sceneID="rls-Lv-rVa">
             <objects>
                 <viewController storyboardIdentifier="search" id="dGG-jg-kAG" customClass="SearchViewController" customModule="sweetWatch" customModuleProvider="target" sceneMemberID="viewController">
@@ -491,7 +491,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kSR-IE-wvn">
-                                <rect key="frame" x="0.0" y="195" width="393" height="574"/>
+                                <rect key="frame" x="0.0" y="195" width="393" height="544"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PosterCell" id="P03-Dm-Wg7">
@@ -544,14 +544,13 @@
                             <constraint firstItem="kSR-IE-wvn" firstAttribute="top" secondItem="5gx-Na-VSl" secondAttribute="bottom" constant="27" id="GEc-xY-e1r"/>
                             <constraint firstItem="5gx-Na-VSl" firstAttribute="leading" secondItem="dJB-Q3-BAC" secondAttribute="leading" id="PLX-bU-X8m"/>
                             <constraint firstItem="dJB-Q3-BAC" firstAttribute="bottom" secondItem="5gx-Na-VSl" secondAttribute="bottom" constant="601" id="R0e-yi-lKb"/>
-                            <constraint firstItem="dJB-Q3-BAC" firstAttribute="bottom" secondItem="kSR-IE-wvn" secondAttribute="bottom" id="aO2-rn-Ih9"/>
                             <constraint firstItem="5gx-Na-VSl" firstAttribute="width" secondItem="ccj-3O-fVY" secondAttribute="width" id="dXc-IY-6kb"/>
                             <constraint firstItem="5gx-Na-VSl" firstAttribute="top" secondItem="eUA-I0-Ws2" secondAttribute="bottom" constant="22" id="iNb-rq-jAT"/>
-                            <constraint firstItem="dJB-Q3-BAC" firstAttribute="bottom" secondItem="kSR-IE-wvn" secondAttribute="bottom" id="oNj-xN-uGg"/>
+                            <constraint firstItem="dJB-Q3-BAC" firstAttribute="bottom" secondItem="kSR-IE-wvn" secondAttribute="bottom" constant="30" id="oNj-xN-uGg"/>
                             <constraint firstItem="dJB-Q3-BAC" firstAttribute="trailing" secondItem="eUA-I0-Ws2" secondAttribute="trailing" constant="47" id="tcS-bp-ogV"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="magnifyingglass" catalog="system" id="m3k-Zf-1YZ"/>
+                    <tabBarItem key="tabBarItem" systemItem="search" id="m3k-Zf-1YZ"/>
                     <connections>
                         <outlet property="searchBar" destination="5gx-Na-VSl" id="3N6-8w-HrB"/>
                         <outlet property="searchTableView" destination="kSR-IE-wvn" id="ZNi-lV-glf"/>
@@ -775,7 +774,8 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VVO-Jf-ScF">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" systemColor="systemYellowColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="Dsj-9f-lWK" kind="relationship" relationship="viewControllers" id="hqb-Yg-qsh"/>
@@ -792,7 +792,6 @@
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="img1" width="1280" height="1920"/>
         <image name="img6" width="2765" height="4096"/>
-        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -801,7 +800,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
