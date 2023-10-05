@@ -47,7 +47,9 @@ class LoginViewController: UIViewController {
         }
         print("username : \(user?.name), password : \(user?.password), movies : \(user?.movies), series : \(user?.series)")
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "tabBarController") as? MainTabBarController {
-        
+            UserDefaults.standard.set(user?.name, forKey: "username")
+            UserDefaults.standard.set(user?.password, forKey: "password")
+            
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true, completion: nil)
 
