@@ -18,6 +18,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         //JEU DE DONNEE TEST
         let movie1 = Movie(
+            id: 1,
             name: "film1",
             image: "image film1",
             resume: "resume1",
@@ -25,6 +26,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
             actors: [Actor(name: "john wick", image: "image john")]
         )
         let movie2 = Movie(
+            id: 1,
             name: "film2",
             image: "image film2",
             resume: "resume2",
@@ -32,6 +34,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
             actors: [Actor(name: "john wick2", image: "image john2")]
         )
         let serie1 = Serie(
+            id: 1,
             name: "serie1",
             image: "image serie1",
             resume: "resumeserie1",
@@ -39,6 +42,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
             actors: [Actor(name: "john wick", image: "image john")]
         )
         let serie2 = Serie(
+            id: 1,
             name: "serie2",
             image: "image serie2",
             resume: "resumeserie2",
