@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        if let rootVC = window?.rootViewController as? ViewController {
 //                    rootVC.container = persistentContainer
 //                }        
+        let container = NSPersistentContainer(name: "Model")
+          print(container.persistentStoreDescriptions.first?.url)
         return true
     }
 

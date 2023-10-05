@@ -29,33 +29,36 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var genreContentLabel: UILabel!
     
+    @IBOutlet weak var detailButton: UIButton!
     //navigation variable
     var searchType: String = ""
     var searchId: Int = 0
-    
+    var canBeDeleted = false
     
     struct ItemToDisplay{
         var id: Int
         var title: String
         var image: UIImage
+        var imageUrl : String
         var description : String
         var genre : [String]
         var date : String
         var note : Double
     }
+    var itemToDisplay =  ItemToDisplay(id: 0, title: "", image: UIImage(), imageUrl: "", description: "", genre: [], date: "", note: 0)
     
-    var itemToDisplay =  ItemToDisplay(id: 0, title: "", image: UIImage(), description: "", genre: [], date: "", note: 0)
-    
-    
+    var favoriteVc : FavoritesViewController = FavoritesViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         
-        
-        
-
+        if canBeDeleted {
+            self.detailButton.setTitle("Remove from WatchList", for: .normal)
+            self.detailButton.backgroundColor = .red
+        }
+                
         let headers = [
           "accept": "application/json",
           "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxODQyNTJmYjRjNDVkMzE4ZjE1NGQwNzIzOTYzZmRjNiIsInN1YiI6IjY1MWJjYzA5NjcyOGE4MDEzYzQxNzI5ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xtWVRlxeUp42ahtck_sWoi1EtkR6hL16hBCRRsOztUk"
@@ -81,6 +84,7 @@ class DetailViewController: UIViewController {
                       self.itemToDisplay.description = data["overview"] as! String
                       self.itemToDisplay.date = self.searchType == "movie" ? data["release_date"] as! String : data["first_air_date"] as! String
                       self.itemToDisplay.note = data["vote_average"] as! Double
+                      self.itemToDisplay.imageUrl = data["poster_path"] as! String
                       let imageUrlString = "https://image.tmdb.org/t/p/w500" + (data["poster_path"] as! String)
                       if let imageUrl = URL(string: imageUrlString){
                           let imageData = try? Data(contentsOf: imageUrl)
@@ -114,49 +118,72 @@ class DetailViewController: UIViewController {
 
         dataTask.resume()
         
-        
-        /*
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
-        
-        let url = URL(string: "https://api.deezer.com/search?q=a")!
-        
-        let task = session.dataTask(with: url) { (data, response, error) in
-            if error != nil {
-                print(error!.localizedDescription)
-            } else {
-                if let json = try? JSONSerialization.jsonObject(with: data!, options: .mutableContainers) {
-                    if let data = json as? [String: AnyObject] {
-                        
-                        if let items = data["data"] as? [[String: AnyObject]] {
-                            for item in items {
-                                //print(item["link"]!)
-                                //self.browsers.append(item["link"]! as! String)
-                                if let artist = Artist(json: item) {
-                                   self.navigateur.append(artist)
-                                }
-                                
-                            }
+    }
+
+    
+    @IBAction func addToWatchlistAction(_ sender: Any) {
+        let username = UserDefaults.standard.string(forKey: "username")
+        let password = UserDefaults.standard.string(forKey: "password")
+        let dataManager = CoreDataManager()
+        var args = ["name": username, "password" : password ]
+        var user = dataManager.fetchObjects(Users.self, withArguments: args).first as? Users
+        print(canBeDeleted)
+        if canBeDeleted{
+            print(self.searchType)
+            if self.searchType == "tv"{
+                if let series = user?.series {
+                    let serieArray = series.allObjects as? [Series]
+                    
+                    for serie in serieArray ?? []{
+                        if serie.name == self.itemToDisplay.title {
+                            user?.removeFromSeries(serie)
+                            dataManager.delete(item: serie)
                         }
                     }
                 }
             }
-*/
-    }
-    
-    
-    
-    @IBAction func addToWatchlistAction(_ sender: Any) {
-    }
-    
-    /*
-    // MARK: - Navigation
+            else{
+                if let movies = user?.movies {
+                    let movieArray = movies.allObjects as? [Movies]
+                    
+                    for movie in movieArray ?? []{
+                        if movie.name == self.itemToDisplay.title{
+                            user?.removeFromMovies(movie)
+                            dataManager.delete(item: movie)
+                        }
+                    }
+                }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+            }
+            self.dismiss(animated: true){
+                self.favoriteVc.loadData()
+            }
+        }else{
+            if self.searchType == "tv"{
+                var serie = dataManager.getEntity(entityName: "Series") as? Series
+                serie?.id = Int64(self.itemToDisplay.id)
+                serie?.image = self.itemToDisplay.imageUrl
+                serie?.name = self.itemToDisplay.title
+                serie?.synopsis = self.itemToDisplay.description
+                
+                user?.addToSeries(serie ?? Series())
+            }
+            else{
+                var movie = dataManager.getEntity(entityName: "Movies") as? Movies
+                movie?.id = Int64(self.itemToDisplay.id)
+                movie?.image = self.itemToDisplay.imageUrl
+                movie?.name = self.itemToDisplay.title
+                movie?.synopsis = self.itemToDisplay.description
+                
+                user?.addToMovies(movie ?? Movies())
+            }
+            
+            
+            dataManager.save()
+        }
+        
+
     }
-    */
+    
 
 }

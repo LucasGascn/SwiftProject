@@ -42,6 +42,35 @@ class CoreDataManager {
       }
     }
     
+    func save(){
+        guard let appDelegate =
+          UIApplication.shared.delegate as? AppDelegate else {
+          return
+        }
+        appDelegate.saveContext()
+    }
+    
+    func getEntity(entityName: String) -> NSManagedObject{
+        guard let appDelegate =
+          UIApplication.shared.delegate as? AppDelegate else {
+          return NSManagedObject()
+        }
+        
+        // 1
+        let managedContext =
+          appDelegate.persistentContainer.viewContext
+        
+        // 2
+        let entity =
+          NSEntityDescription.entity(forEntityName: entityName,
+                                     in: managedContext)!
+        
+        let entiTyObject = NSManagedObject(entity: entity,
+                                     insertInto: managedContext)
+        
+        return entiTyObject
+    }
+    
     func fetchObjects<T: NSManagedObject>(_ entity: T.Type, withArguments arguments: [String: Any]) -> [T]{
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
@@ -73,6 +102,25 @@ class CoreDataManager {
                 print("Failed to fetch objects: \(error.localizedDescription)")
                 let error : [T] = []
                 return error
+            }
+    }
+    
+    func delete(item: NSManagedObject){
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+            return 
+          }
+           
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        managedContext.delete(item)
+        
+        do {
+                // Enregistrez les modifications dans la base de données
+                try managedContext.save()
+            } catch {
+                print("Erreur lors de la suppression de l'objet : \(error.localizedDescription)")
             }
     }
 }

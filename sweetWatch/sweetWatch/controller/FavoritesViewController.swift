@@ -5,8 +5,8 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     
     
-    var movieList:[Movie] = []
-    var serieList:[Serie] = []
+    var movieList:[Movies] = []
+    var serieList:[Series] = []
     
     @IBOutlet weak var favoritesTableView: UITableView!
     
@@ -16,49 +16,20 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //JEU DE DONNEE TEST
-        let movie1 = Movie(
-            id: 1,
-            name: "film1",
-            image: "image film1",
-            resume: "resume1",
-            rating: 4.2,
-            actors: [Actor(name: "john wick", image: "image john")]
-        )
-        let movie2 = Movie(
-            id: 1,
-            name: "film2",
-            image: "image film2",
-            resume: "resume2",
-            rating: 2.2,
-            actors: [Actor(name: "john wick2", image: "image john2")]
-        )
-        let serie1 = Serie(
-            id: 1,
-            name: "serie1",
-            image: "image serie1",
-            resume: "resumeserie1",
-            rating: 4.2,
-            actors: [Actor(name: "john wick", image: "image john")]
-        )
-        let serie2 = Serie(
-            id: 1,
-            name: "serie2",
-            image: "image serie2",
-            resume: "resumeserie2",
-            rating: 2.2,
-            actors: [Actor(name: "john wick2", image: "image john2")]
-        )
-        self.serieList = [serie1,serie2]
-        self.movieList = [movie1,movie2]
-        
-        
         self.favoritesTableView.delegate = self
         self.favoritesTableView.dataSource = self
+        
+        loadData()
         
         // Do any additional setup after loading the view.
         
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        loadData()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -83,11 +54,11 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         if self.toggleOutlet.selectedSegmentIndex == 0{
             cell.favoriteTitleView.text = self.movieList[indexPath.row].name
-            cell.favoriteResumeView.text = self.movieList[indexPath.row].resume
+            cell.favoriteResumeView.text = self.movieList[indexPath.row].synopsis
             cell.favoriteImageView.image = UIImage.img3
         }else{
             cell.favoriteTitleView.text = self.serieList[indexPath.row].name
-            cell.favoriteResumeView.text = self.serieList[indexPath.row].resume
+            cell.favoriteResumeView.text = self.serieList[indexPath.row].synopsis
             cell.favoriteImageView.image = UIImage.img4
             //cell.textLabel?.text = self.serieList[indexPath.row].name
         }
@@ -100,19 +71,45 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "detailView") as? DetailViewController {
             
             //Afficher une modal
-            vc.searchId = 114461
+            vc.searchId = self.toggleOutlet.selectedSegmentIndex == 0 ? Int(self.movieList[indexPath.item].id): Int(self.serieList[indexPath.item].id)
+            
             vc.searchType = self.toggleOutlet.selectedSegmentIndex == 0 ? "movie" : "tv"
-            //self.navigateur[indexPath.row].urlPage
-            //vc.modalPresentationStyle = .fullScreen
+            vc.canBeDeleted = true
+            
+            vc.favoriteVc = self
+            
             self.present(vc, animated: true, completion: nil)
             
-            //Afficher push navigation
-            //self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
     @IBAction func toggleTableView(_ sender: Any) {
         self.favoritesTableView.reloadData()
     }
+    
+    func loadData(){
+        self.movieList.removeAll()
+        self.serieList.removeAll()
+        let username = UserDefaults.standard.string(forKey: "username")
+        let password = UserDefaults.standard.string(forKey: "password")
+        let dataManager = CoreDataManager()
+        var args = ["name": username, "password" : password ]
+        var user = dataManager.fetchObjects(Users.self, withArguments: args).first as? Users
         
+        if let movies = user?.movies {
+            let movieArray = movies.allObjects as? [Movies]
+            
+            for movie in movieArray ?? []{
+                self.movieList.append(movie)
+            }
+        }
+        if let series = user?.series {
+            let serieArray = series.allObjects as? [Series]
+            
+            for serie in serieArray ?? []{
+                self.serieList.append(serie)
+            }
+        }
+        self.favoritesTableView.reloadData()
+    }
 }

@@ -132,17 +132,17 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         dataTask.resume()
     }
 
-   
-    /*
-    // MARK: - Navigation
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "detailView") as? DetailViewController {
+            
+            //Afficher une modal
+            vc.searchId = collectionView == self.seriesCollectionView ? Series[indexPath.item].id : Movies[indexPath.item].id
+            vc.searchType = collectionView == self.seriesCollectionView ? "tv" : "movie"
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+            self.present(vc, animated: true, completion: nil)
+            
+        }
     }
-    */
-
 }
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {

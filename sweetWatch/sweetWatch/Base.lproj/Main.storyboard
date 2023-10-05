@@ -696,6 +696,7 @@
                         <outlet property="dateLabel" destination="wVe-50-Efk" id="wGL-8X-mZV"/>
                         <outlet property="descriptionContentLabel" destination="sWx-3V-wxl" id="Roa-Ld-fqs"/>
                         <outlet property="descriptionTitleLabel" destination="Knb-fb-e6c" id="TSz-3d-tkZ"/>
+                        <outlet property="detailButton" destination="4jY-vl-Kbq" id="Suk-cA-rlG"/>
                         <outlet property="detailScrollView" destination="OHw-th-aFw" id="N0D-Z3-DZ2"/>
                         <outlet property="genreContentLabel" destination="I2Q-k7-oKY" id="bNl-28-tHx"/>
                         <outlet property="genreTitleLabel" destination="lsh-ln-2ab" id="Crp-3h-Swx"/>
