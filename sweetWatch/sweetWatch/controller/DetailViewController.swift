@@ -29,6 +29,10 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var genreContentLabel: UILabel!
     
+    //navigation variable
+    var searchType: String = ""
+    var searchId: Int = 0
+    
     
     struct ItemToDisplay{
         var id: Int
@@ -46,8 +50,6 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
- 
-        
         
         // Do any additional setup after loading the view.
         
@@ -59,7 +61,7 @@ class DetailViewController: UIViewController {
           "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxODQyNTJmYjRjNDVkMzE4ZjE1NGQwNzIzOTYzZmRjNiIsInN1YiI6IjY1MWJjYzA5NjcyOGE4MDEzYzQxNzI5ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xtWVRlxeUp42ahtck_sWoi1EtkR6hL16hBCRRsOztUk"
         ]
 
-        let request = NSMutableURLRequest(url: NSURL(string: "https://api.themoviedb.org/3/movie/624860?language=en-US")! as URL,
+        let request = NSMutableURLRequest(url: NSURL(string: "https://api.themoviedb.org/3/\(searchType)/\(self.searchId)?language=en-US")! as URL,
                                                 cachePolicy: .useProtocolCachePolicy,
                                             timeoutInterval: 10.0)
         request.httpMethod = "GET"
@@ -74,10 +76,10 @@ class DetailViewController: UIViewController {
                   if let data = json as? [String: AnyObject] {
                       
                        
-                      self.itemToDisplay.title = data["original_title"] as! String
+                      self.itemToDisplay.title = self.searchType == "movie" ? data["original_title"] as! String : data["original_name"] as! String
                       self.itemToDisplay.id = data["id"] as! Int
                       self.itemToDisplay.description = data["overview"] as! String
-                      self.itemToDisplay.date = data["release_date"] as! String
+                      self.itemToDisplay.date = self.searchType == "movie" ? data["release_date"] as! String : data["first_air_date"] as! String
                       self.itemToDisplay.note = data["vote_average"] as! Double
                       let imageUrlString = "https://image.tmdb.org/t/p/w500" + (data["poster_path"] as! String)
                       if let imageUrl = URL(string: imageUrlString){
@@ -96,6 +98,7 @@ class DetailViewController: UIViewController {
                       
                     //LOAD DATA IN VIEW
                       DispatchQueue.main.async {
+                          self.titleLabel.text = self.itemToDisplay.title
                           self.noteLabel.text = "Note : \(self.itemToDisplay.note)"
                           self.dateLabel.text = "Date de sortie : \(self.itemToDisplay.date)"
                           self.descriptionContentLabel.text = self.itemToDisplay.description
