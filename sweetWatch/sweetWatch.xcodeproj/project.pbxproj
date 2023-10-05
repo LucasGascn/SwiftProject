@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1759827D2ACDAB6A00A6A657 /* CustomFavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1759827C2ACDAB6A00A6A657 /* CustomFavoriteCell.swift */; };
+		175982872ACDBFD700A6A657 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175982862ACDBFD700A6A657 /* DetailViewController.swift */; };
 		5983CC1B2ACC09B70023148F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983CC1A2ACC09B70023148F /* AppDelegate.swift */; };
 		5983CC1D2ACC09B70023148F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983CC1C2ACC09B70023148F /* SceneDelegate.swift */; };
 		5983CC1F2ACC09B70023148F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983CC1E2ACC09B70023148F /* ViewController.swift */; };
@@ -58,6 +59,7 @@
 
 /* Begin PBXFileReference section */
 		1759827C2ACDAB6A00A6A657 /* CustomFavoriteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomFavoriteCell.swift; path = ../../../../../Desktop/CustomFavoriteCell.swift; sourceTree = "<group>"; };
+		175982862ACDBFD700A6A657 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5983CC172ACC09B70023148F /* sweetWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sweetWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5983CC1A2ACC09B70023148F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5983CC1C2ACC09B70023148F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				E493FC932ACC4CE800A63965 /* HomeViewController.swift */,
 				E493FC962ACC4DBD00A63965 /* SearchViewController.swift */,
 				E493FC982ACC4E1E00A63965 /* FavoritesViewController.swift */,
+				175982862ACDBFD700A6A657 /* DetailViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -369,15 +372,14 @@
 				5983CC1D2ACC09B70023148F /* SceneDelegate.swift in Sources */,
 				E493FCD12ACD7C1700A63965 /* Actors+CoreDataProperties.swift in Sources */,
 				E493FCCF2ACD7C1700A63965 /* Series+CoreDataProperties.swift in Sources */,
+				175982872ACDBFD700A6A657 /* DetailViewController.swift in Sources */,
 				E493FC922ACC4CB900A63965 /* Actor.swift in Sources */,
 				E493FCCA2ACD7C1700A63965 /* Movies+CoreDataClass.swift in Sources */,
 				E493FC9C2ACD4CCD00A63965 /* Model.xcdatamodeld in Sources */,
-
 				E493FCD02ACD7C1700A63965 /* Actors+CoreDataClass.swift in Sources */,
 				E493FCCE2ACD7C1700A63965 /* Series+CoreDataClass.swift in Sources */,
 				E493FCCD2ACD7C1700A63965 /* Users+CoreDataProperties.swift in Sources */,
 				E493FCDF2ACD9FB300A63965 /* CustomCollectionViewCell.swift in Sources */,
-
 				1759827D2ACDAB6A00A6A657 /* CustomFavoriteCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

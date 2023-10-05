@@ -62,6 +62,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //select movie or serie to show
         if self.toggleOutlet.selectedSegmentIndex == 0{
             return self.movieList.count
         }else{
@@ -71,6 +72,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = favoritesTableView.dequeueReusableCell(withIdentifier: "favoriteCellIdentifier", for: indexPath) as! CustomFavoriteCell
+        
         //make cell rounded
         cell.favoriteView.layer.cornerRadius = 15
         cell.favoriteImageView.layer.cornerRadius = 5
@@ -85,9 +87,6 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
             cell.favoriteImageView.image = UIImage.img4
             //cell.textLabel?.text = self.serieList[indexPath.row].name
         }
-        
-        
-        
         // Configure the cell...
 
         return cell
