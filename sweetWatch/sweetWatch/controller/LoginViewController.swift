@@ -45,16 +45,7 @@ class LoginViewController: UIViewController {
             print("no user found")
             return
         }
-        print("username : \(user?.name), password : \(user?.password), movies : \(user?.movies), series : \(user?.series)")
-        if let movies = user?.movies {
-            let movieArray = movies.allObjects as? [Movies]
-            
-            for movie in movieArray ?? []{
-                print(movie.name)
-                print(movie.synopsis)
-            }
-        }
-        
+
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "tabBarController") as? MainTabBarController {
             UserDefaults.standard.set(user?.name, forKey: "username")
             UserDefaults.standard.set(user?.password, forKey: "password")

@@ -62,7 +62,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             cell.configure(image: "https://www.themoviedb.org/t/p/w1280/\(Movies[indexPath.item].image)")
         }
         if collectionView == self.seriesCollectionView {
-            print("series")
             cell.configure(image: "https://www.themoviedb.org/t/p/w1280/\(Series[indexPath.item].image)")
         }
         return cell

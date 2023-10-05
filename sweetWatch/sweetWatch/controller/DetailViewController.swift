@@ -56,6 +56,11 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     var favoriteVc : FavoritesViewController = FavoritesViewController()
     
+    let headers = [
+      "accept": "application/json",
+      "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxODQyNTJmYjRjNDVkMzE4ZjE1NGQwNzIzOTYzZmRjNiIsInN1YiI6IjY1MWJjYzA5NjcyOGE4MDEzYzQxNzI5ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xtWVRlxeUp42ahtck_sWoi1EtkR6hL16hBCRRsOztUk"
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,24 +74,54 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         self.actorsCollectionView.dataSource = self
         self.actorsCollectionView.delegate = self
         
-        
-        
-        
-        self.actorsCollectionView.register(UINib(nibName:"ActorsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier:CustomCollectionViewCell.identifier)
-        
-        
+        self.actorsCollectionView.register(UINib(nibName:"ActorsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier:ActorsCollectionViewCell.identifier)
         // Do any additional setup after loading the view.
         
         if canBeDeleted {
             self.detailButton.setTitle("Remove from WatchList", for: .normal)
             self.detailButton.backgroundColor = .red
         }
-                
-        let headers = [
-          "accept": "application/json",
-          "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxODQyNTJmYjRjNDVkMzE4ZjE1NGQwNzIzOTYzZmRjNiIsInN1YiI6IjY1MWJjYzA5NjcyOGE4MDEzYzQxNzI5ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xtWVRlxeUp42ahtck_sWoi1EtkR6hL16hBCRRsOztUk"
-        ]
+        getDetail()
+        getActors()
+    }
+    
+    func getActors(){
+        //JULES ICI LA REQUETE POUR RECUP LES ACTEURS DU FILM
+        //AVEC CREATTION DU TABLEAU actors
+        var request = NSMutableURLRequest(url: NSURL(string: "https://api.themoviedb.org/3/\(searchType)/\(self.searchId)/credits?language=en-US")! as URL,
+                                                cachePolicy: .useProtocolCachePolicy,
+                                            timeoutInterval: 10.0)
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+        let session = URLSession.shared
 
+        var dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            if (error != nil) {
+                print(error as Any)
+            } else {
+                if let json = try? JSONSerialization.jsonObject(with: data!, options: .mutableContainers) {
+                    if let data = json as? [String:AnyObject] {
+                        if let items = data["cast"] as? [[String : AnyObject]]{
+                            for item in items {
+                                let id = item["id"] as? Int
+                                let name = item["name"] as? String
+                                let image = item["profile_path"] as? String
+                                let actor = Actor(id: id ?? 0, name: "", image: image ?? "")
+                                self.actors.append(actor)
+                                
+                            }
+                        }
+                    }
+                }
+                DispatchQueue.main.async {
+                    self.actorsCollectionView.reloadData()
+                }
+            }
+        })
+        dataTask.resume()
+    }
+    
+    func getDetail(){
         var request = NSMutableURLRequest(url: NSURL(string: "https://api.themoviedb.org/3/\(searchType)/\(self.searchId)?language=en-US")! as URL,
                                                 cachePolicy: .useProtocolCachePolicy,
                                             timeoutInterval: 10.0)
@@ -121,7 +156,6 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
                               self.itemToDisplay.genre.append(genre["name"] as! String)
                           }
                       }
-                      
                                 
                     //LOAD DATA IN VIEW
                       DispatchQueue.main.async {
@@ -138,41 +172,8 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
               }
           }
         })
-        
-        //JULES ICI LA REQUETE POUR RECUP LES ACTEURS DU FILM
-        //AVEC CREATTION DU TABLEAU actors
-        request = NSMutableURLRequest(url: NSURL(string: "https://api.themoviedb.org/3/\(searchType)/\(self.searchId)/credits?language=en-US")! as URL,
-                                                cachePolicy: .useProtocolCachePolicy,
-                                            timeoutInterval: 10.0)
-        request.httpMethod = "GET"
-        request.allHTTPHeaderFields = headers
-        dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-            if (error != nil) {
-                print(error as Any)
-            } else {
-                if let json = try? JSONSerialization.jsonObject(with: data!, options: .mutableContainers) {
-                    if let data = json as? [String:AnyObject] {
-                        if let items = data["crew"] as? [[String : AnyObject]]{
-                            //print(items)
-                            for item in items {
-                                let id = item["id"] as? Int
-                                let name = item["name"] as? String
-                                let image = item["profil_path"] as? String
-                                let actor = Actor(id: id ?? 0, name: "", image: image ?? "")
-                                self.actors.append(actor)
-                                
-                            }
-                        }
-                    }
-                }
-                DispatchQueue.main.async {
-                    self.actorsCollectionView.reloadData()
-                }
-            }
-        })
-
         dataTask.resume()
-        
+
     }
     
     
@@ -190,8 +191,7 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         cell.layer.cornerRadius = 10
         
         
-        cell.configure(image: "https://www.themoviedb.org/t/p/w1280/\(actors[indexPath.item].image)")
-        
+        cell.configure(image: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2\(actors[indexPath.item].image)")
         return cell
     }
     
@@ -207,9 +207,7 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         let dataManager = CoreDataManager()
         var args = ["name": username, "password" : password ]
         var user = dataManager.fetchObjects(Users.self, withArguments: args).first as? Users
-        print(canBeDeleted)
         if canBeDeleted{
-            print(self.searchType)
             if self.searchType == "tv"{
                 if let series = user?.series {
                     let serieArray = series.allObjects as? [Series]
