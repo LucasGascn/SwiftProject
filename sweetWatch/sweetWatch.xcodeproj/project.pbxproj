@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1759827D2ACDAB6A00A6A657 /* CustomFavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1759827C2ACDAB6A00A6A657 /* CustomFavoriteCell.swift */; };
 		175982872ACDBFD700A6A657 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175982862ACDBFD700A6A657 /* DetailViewController.swift */; };
 		5983CC1B2ACC09B70023148F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983CC1A2ACC09B70023148F /* AppDelegate.swift */; };
 		5983CC1D2ACC09B70023148F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5983CC1C2ACC09B70023148F /* SceneDelegate.swift */; };
@@ -59,7 +58,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1759827C2ACDAB6A00A6A657 /* CustomFavoriteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomFavoriteCell.swift; path = ../../../../../Desktop/CustomFavoriteCell.swift; sourceTree = "<group>"; };
 		175982862ACDBFD700A6A657 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5983CC172ACC09B70023148F /* sweetWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sweetWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5983CC1A2ACC09B70023148F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -383,7 +381,6 @@
 				E493FCCE2ACD7C1700A63965 /* Series+CoreDataClass.swift in Sources */,
 				E493FCCD2ACD7C1700A63965 /* Users+CoreDataProperties.swift in Sources */,
 				E493FCDF2ACD9FB300A63965 /* CustomCollectionViewCell.swift in Sources */,
-				1759827D2ACDAB6A00A6A657 /* CustomFavoriteCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

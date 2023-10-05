@@ -14,9 +14,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     ]
 
     @IBOutlet weak var moviesCollectionView: UICollectionView!
-
-    var Movies : [Movie] = []
+    @IBOutlet weak var seriesCollectionView: UICollectionView!
     
+    var Movies : [Movie] = []
+    var Series : [Serie] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         let layout = UICollectionViewFlowLayout()
@@ -28,8 +29,46 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         self.moviesCollectionView.dataSource = self
         self.moviesCollectionView.delegate = self
         
+        self.seriesCollectionView.setCollectionViewLayout(layout, animated: true)
+        self.seriesCollectionView.dataSource = self
+        self.seriesCollectionView.delegate = self
+        
+        
         self.moviesCollectionView.register(UINib(nibName:"CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier:CustomCollectionViewCell.identifier)
+        
+        self.seriesCollectionView.register(UINib(nibName:"CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier:CustomCollectionViewCell.identifier)
+        GetMovies()
+        GetSeries()
 
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if collectionView == self.moviesCollectionView{
+            return Movies.count
+        }
+        if collectionView == self.seriesCollectionView{
+            return Series.count
+        }
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = self.moviesCollectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.identifier, for: indexPath) as? CustomCollectionViewCell else {
+            fatalError("failed")
+        }
+        
+        cell.layer.cornerRadius = 10
+        if collectionView == self.moviesCollectionView {
+            cell.configure(image: "https://www.themoviedb.org/t/p/w1280/\(Movies[indexPath.item].image)")
+        }
+        if collectionView == self.seriesCollectionView {
+            print("series")
+            cell.configure(image: "https://www.themoviedb.org/t/p/w1280/\(Series[indexPath.item].image)")
+        }
+        return cell
+    }
+    
+    func GetMovies(){
         let request = NSMutableURLRequest(url: NSURL(string: "https://api.themoviedb.org/3/trending/movie/day?language=en-US")! as URL,cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
         request.httpMethod = "GET"
         request.allHTTPHeaderFields = headers
@@ -58,31 +97,41 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
               }
           }
         })
-
         dataTask.resume()
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == self.moviesCollectionView{
-            return Movies.count
-        }
-        return 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = self.moviesCollectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.identifier, for: indexPath) as? CustomCollectionViewCell else {
-            fatalError("failed")
-        }
+    func GetSeries(){
+        let request = NSMutableURLRequest(url: NSURL(string: "https://api.themoviedb.org/3/trending/tv/day?language=en-US")! as URL,cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
         
-        cell.layer.cornerRadius = 10
-        if collectionView == self.moviesCollectionView {
-            print(Movies[indexPath.item])
-            cell.configure(image: "https://www.themoviedb.org/t/p/w1280/\(Movies[indexPath.item].image)")
-        }
-        return cell
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+          if (error != nil) {
+            print(error as Any)
+          } else {
+              if let json = try? JSONSerialization.jsonObject(with: data!, options: .mutableContainers){
+                  if let data = json as? [String:AnyObject] {
+                      if let items = data["results"] as? [[String : AnyObject]]{
+                          for item in items {
+                              let id = item["id"] as? Int
+                              let image = item["poster_path"] as? String
+                              let serie = Serie(id: id ?? 0, name: "", image: image ?? "", resume: "", rating: 0, actors: [])
+                              self.Series.append(serie)
+                              
+                          }
+                      }
+                  }
+              }
+              DispatchQueue.main.async {
+                  self.seriesCollectionView.reloadData()
+              }
+          }
+        })
+        dataTask.resume()
     }
-    
-    
+
    
     /*
     // MARK: - Navigation
