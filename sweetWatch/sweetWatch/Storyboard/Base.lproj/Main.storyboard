@@ -276,13 +276,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trending Movie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhF-NQ-0mD">
-                                <rect key="frame" x="138" y="70" width="117" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="124.33333333333333" y="70" width="144.33333333333337" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" systemColor="systemYellowColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="h5I-bc-kEw">
-                                <rect key="frame" x="0.0" y="111" width="393" height="258"/>
+                                <rect key="frame" x="0.0" y="114" width="393" height="255"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="20" minimumInteritemSpacing="30" id="clM-zb-Qrc">
                                     <size key="itemSize" width="280" height="240"/>
@@ -303,13 +303,13 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trending Series" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8b-fR-ayV">
-                                <rect key="frame" x="137" y="389" width="119" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="123.00000000000001" y="389" width="147.33333333333337" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" systemColor="systemYellowColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dXS-fe-ECv">
-                                <rect key="frame" x="0.0" y="430" width="393" height="258"/>
+                                <rect key="frame" x="0.0" y="433" width="393" height="255"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="5" id="H7N-ZK-WpL">
                                     <size key="itemSize" width="280" height="240"/>
@@ -370,12 +370,14 @@
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="160" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="F2e-bi-3YQ">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="621"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="separatorColor" systemColor="systemYellowColor"/>
+                                        <color key="sectionIndexBackgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoriteCellIdentifier" rowHeight="160" id="2pA-ys-EbE" customClass="CustomFavoriteCell" customModule="sweetWatch" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="50" width="393" height="160"/>
                                                 <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2pA-ys-EbE" id="AQ8-CV-y01">
+                                                <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2pA-ys-EbE" id="AQ8-CV-y01">
                                                     <rect key="frame" x="0.0" y="0.0" width="393" height="160"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
@@ -421,6 +423,7 @@
                                                             </constraints>
                                                         </view>
                                                     </subviews>
+                                                    <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottomMargin" secondItem="SvL-HY-apX" secondAttribute="bottom" id="4ug-J8-1lq"/>
                                                         <constraint firstItem="SvL-HY-apX" firstAttribute="top" secondItem="AQ8-CV-y01" secondAttribute="topMargin" id="9Yo-Zz-epL"/>
@@ -428,6 +431,7 @@
                                                         <constraint firstItem="SvL-HY-apX" firstAttribute="leading" secondItem="AQ8-CV-y01" secondAttribute="leadingMargin" id="cSt-xs-vkX"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <outlet property="favoriteImageView" destination="UZ0-j0-fbO" id="Ts8-e5-vOP"/>
                                                     <outlet property="favoriteResumeView" destination="Iet-AZ-ijT" id="MkA-Fg-NMK"/>
@@ -439,6 +443,7 @@
                                         <sections/>
                                     </tableView>
                                 </subviews>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="F2e-bi-3YQ" firstAttribute="leading" secondItem="cdI-el-7eE" secondAttribute="leading" id="6fd-Ab-06F"/>
                                     <constraint firstAttribute="bottom" secondItem="F2e-bi-3YQ" secondAttribute="bottom" id="Cbz-LT-UQF"/>
@@ -462,7 +467,7 @@
                             </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="IJS-5D-4uj"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="IJS-5D-4uj" firstAttribute="bottom" secondItem="cdI-el-7eE" secondAttribute="bottom" constant="14" id="13l-t6-RTk"/>
                             <constraint firstItem="cdI-el-7eE" firstAttribute="leading" secondItem="IJS-5D-4uj" secondAttribute="leading" id="1ZL-hL-crR"/>
@@ -649,7 +654,7 @@
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ijb-eJ-Y7L">
                                                 <rect key="frame" x="10" y="425" width="373" height="258"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="258" id="VzK-Hl-5K5"/>
                                                 </constraints>
@@ -671,7 +676,7 @@
                                                 </cells>
                                             </collectionView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="75l-gW-Jyw" secondAttribute="trailing" id="12B-gG-Enl"/>
                                             <constraint firstItem="Ijb-eJ-Y7L" firstAttribute="top" secondItem="7g5-Py-pDm" secondAttribute="bottom" constant="10" id="1Vo-HK-bSM"/>
@@ -704,6 +709,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="fWY-Mp-Zcb" firstAttribute="top" secondItem="OHw-th-aFw" secondAttribute="top" id="3bf-lL-3t9"/>
                                     <constraint firstAttribute="bottom" secondItem="fWY-Mp-Zcb" secondAttribute="bottom" id="4y1-wi-oBD"/>
@@ -719,20 +725,19 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jY-vl-Kbq">
                                 <rect key="frame" x="0.0" y="1016" width="393" height="50"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="25g-bQ-CK0"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Add to WatchList">
-                                    <color key="baseBackgroundColor" systemColor="systemYellowColor"/>
-                                </buttonConfiguration>
+                                <buttonConfiguration key="configuration" style="filled" title="Add to WatchList"/>
                                 <connections>
                                     <action selector="addToWatchlistAction:" destination="D9W-do-hpx" eventType="touchUpInside" id="5OH-J4-6xg"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TE7-h0-cLb"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="TE7-h0-cLb" firstAttribute="trailing" secondItem="OHw-th-aFw" secondAttribute="trailing" id="0WH-Yn-6cu"/>
                             <constraint firstItem="OHw-th-aFw" firstAttribute="leading" secondItem="TE7-h0-cLb" secondAttribute="leading" id="19n-8s-JlF"/>
@@ -771,7 +776,7 @@
             <objects>
                 <tabBarController storyboardIdentifier="tabBarController" automaticallyAdjustsScrollViewInsets="NO" id="ccw-HP-f1K" customClass="MainTabBarController" customModule="sweetWatch" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VVO-Jf-ScF">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="VVO-Jf-ScF">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -800,7 +805,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
