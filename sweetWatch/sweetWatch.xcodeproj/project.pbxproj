@@ -128,6 +128,8 @@
 			isa = PBXGroup;
 			children = (
 				E4374A602ACEBAAF00466396 /* CustomFavoriteCell.swift */,
+				E493FCDD2ACD9FB300A63965 /* CustomCollectionViewCell.swift */,
+				1759828B2ACF3FD500A6A657 /* ActorsCollectionViewCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -155,22 +157,16 @@
 		5983CC192ACC09B70023148F /* sweetWatch */ = {
 			isa = PBXGroup;
 			children = (
+				E4374A642ACFF31F00466396 /* Storyboard */,
 				E493FCB12ACD7AAD00A63965 /* coreDataModel */,
 				175982792ACDAB3000A6A657 /* view */,
 				E493FC952ACC4D4B00A63965 /* controller */,
 				E493FC8A2ACC4C7900A63965 /* model */,
 				5983CC1A2ACC09B70023148F /* AppDelegate.swift */,
 				5983CC1C2ACC09B70023148F /* SceneDelegate.swift */,
-				5983CC202ACC09B70023148F /* Main.storyboard */,
-				5983CC232ACC09B80023148F /* Assets.xcassets */,
-				5983CC252ACC09B80023148F /* LaunchScreen.storyboard */,
-				5983CC282ACC09B80023148F /* Info.plist */,
-				E493FC9A2ACD4CCD00A63965 /* Model.xcdatamodeld */,
 				E493FC9F2ACD70D500A63965 /* CoreDataManager.swift */,
-				E493FCDD2ACD9FB300A63965 /* CustomCollectionViewCell.swift */,
-				1759828B2ACF3FD500A6A657 /* ActorsCollectionViewCell.swift */,
-				1759828C2ACF3FD500A6A657 /* ActorsCollectionViewCell.xib */,
-				E493FCDE2ACD9FB300A63965 /* CustomCollectionViewCell.xib */,
+				5983CC232ACC09B80023148F /* Assets.xcassets */,
+				5983CC282ACC09B80023148F /* Info.plist */,
 			);
 			path = sweetWatch;
 			sourceTree = "<group>";
@@ -190,6 +186,17 @@
 				5983CC3D2ACC09B90023148F /* sweetWatchUITestsLaunchTests.swift */,
 			);
 			path = sweetWatchUITests;
+			sourceTree = "<group>";
+		};
+		E4374A642ACFF31F00466396 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				5983CC202ACC09B70023148F /* Main.storyboard */,
+				5983CC252ACC09B80023148F /* LaunchScreen.storyboard */,
+				1759828C2ACF3FD500A6A657 /* ActorsCollectionViewCell.xib */,
+				E493FCDE2ACD9FB300A63965 /* CustomCollectionViewCell.xib */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		E493FC8A2ACC4C7900A63965 /* model */ = {
@@ -219,6 +226,7 @@
 		E493FCB12ACD7AAD00A63965 /* coreDataModel */ = {
 			isa = PBXGroup;
 			children = (
+				E493FC9A2ACD4CCD00A63965 /* Model.xcdatamodeld */,
 				E493FCC22ACD7C1700A63965 /* Movies+CoreDataClass.swift */,
 				E493FCC32ACD7C1700A63965 /* Movies+CoreDataProperties.swift */,
 				E493FCC42ACD7C1700A63965 /* Users+CoreDataClass.swift */,
