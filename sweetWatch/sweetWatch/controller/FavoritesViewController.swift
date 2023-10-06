@@ -48,22 +48,58 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = favoritesTableView.dequeueReusableCell(withIdentifier: "favoriteCellIdentifier", for: indexPath) as! CustomFavoriteCell
         
+        let headers = [
+          "accept": "application/json",
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxODQyNTJmYjRjNDVkMzE4ZjE1NGQwNzIzOTYzZmRjNiIsInN1YiI6IjY1MWJjYzA5NjcyOGE4MDEzYzQxNzI5ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xtWVRlxeUp42ahtck_sWoi1EtkR6hL16hBCRRsOztUk"
+        ]
+        
         //make cell rounded
         cell.favoriteView.layer.cornerRadius = 15
         cell.favoriteImageView.layer.cornerRadius = 5
         
+        //set the cell title and resume
         if self.toggleOutlet.selectedSegmentIndex == 0{
             cell.favoriteTitleView.text = self.movieList[indexPath.row].name
             cell.favoriteResumeView.text = self.movieList[indexPath.row].synopsis
-            cell.favoriteImageView.image = UIImage.img3
         }else{
             cell.favoriteTitleView.text = self.serieList[indexPath.row].name
             cell.favoriteResumeView.text = self.serieList[indexPath.row].synopsis
-            cell.favoriteImageView.image = UIImage.img4
-            //cell.textLabel?.text = self.serieList[indexPath.row].name
         }
-        // Configure the cell...
+        
+        
+        //get the good image request
+        let stringRequest = self.toggleOutlet.selectedSegmentIndex == 0 ? "/movie/\(self.movieList[indexPath.row].id)" : "/tv/\(self.serieList[indexPath.row].id)"
+        let request = NSMutableURLRequest(url: NSURL(string: "https://api.themoviedb.org/3/\(stringRequest)?language=en-US")! as URL,
+                                                cachePolicy: .useProtocolCachePolicy,
+                                            timeoutInterval: 10.0)
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            if (error != nil) {
+                print(error as Any)
+            } else {
+                if let json = try? JSONSerialization.jsonObject(with: data!, options: .mutableContainers) {
+                    if let data = json as? [String: AnyObject] {
+                        let imageUrlString = "https://image.tmdb.org/t/p/w500" + (data["poster_path"] as! String)
+                        if let imageUrl = URL(string: imageUrlString){
+                            let imageData = try? Data(contentsOf: imageUrl)
+                            if let imageData = imageData{
+                                let image = UIImage(data: imageData)
+                                
+                                //set the cell image
+                                DispatchQueue.main.async {
+                                    cell.favoriteImageView.image = image as! UIImage
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        })
+        dataTask.resume()
 
+        
         return cell
     }
     
