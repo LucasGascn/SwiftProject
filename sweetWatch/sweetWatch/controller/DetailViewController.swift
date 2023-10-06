@@ -55,12 +55,14 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
     var itemToDisplay =  ItemToDisplay(id: 0, title: "", image: UIImage(), imageUrl: "", description: "", genre: [], date: "", note: 0)
     
     var favoriteVc : FavoritesViewController = FavoritesViewController()
+
     
     let headers = [
       "accept": "application/json",
       "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxODQyNTJmYjRjNDVkMzE4ZjE1NGQwNzIzOTYzZmRjNiIsInN1YiI6IjY1MWJjYzA5NjcyOGE4MDEzYzQxNzI5ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xtWVRlxeUp42ahtck_sWoi1EtkR6hL16hBCRRsOztUk"
     ]
     
+    var searchVc : SearchViewController = SearchViewController()
     override func viewDidLoad() {
         super.viewDidLoad()
         

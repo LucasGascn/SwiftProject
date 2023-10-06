@@ -96,15 +96,23 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         })
         dataTask.resume()
     }
+    
+    func tcheckSearchBar(){
+        if let searchText = searchBar.text, !searchText.isEmpty {
+                    searchBar(searchBar, textDidChange: searchText)
+                } else {
+                    popularMovie()
+                }
+    }
     @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             selectedCategory = "movie"
             movies.removeAll()
-            popularMovie()
+            tcheckSearchBar()
         } else if sender.selectedSegmentIndex == 1 {
             selectedCategory = "tv" // Pour les séries
             movies.removeAll()
-            popularMovie()
+            tcheckSearchBar()
         }
     }
     override func viewDidLoad() {
@@ -126,6 +134,19 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.textLabel?.text = movie.title
         cell.imageView?.downloaded(from: URL(string: "https://image.tmdb.org/t/p/w500" + movie.posterPath)!)
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "detailView") as? DetailViewController {
+            
+            //Afficher une modal
+            vc.searchId = self.movies[indexPath.item].id
+            
+            vc.searchType = selectedCategory
+            vc.searchVc = self
+            
+            self.present(vc, animated: true, completion: nil)
+            
+        }
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
