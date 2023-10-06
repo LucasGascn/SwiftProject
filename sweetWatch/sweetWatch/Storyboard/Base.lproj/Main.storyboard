@@ -465,6 +465,12 @@
                                     <action selector="toggleTableView:" destination="jDh-Mz-Zwc" eventType="valueChanged" id="n15-Xe-PS8"/>
                                 </connections>
                             </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aucun Favori" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Qj-QH-SQA">
+                                <rect key="frame" x="79.666666666666671" y="277" width="233.66666666666663" height="298"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="IJS-5D-4uj"/>
                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -474,12 +480,16 @@
                             <constraint firstItem="XDX-XS-WNX" firstAttribute="top" secondItem="IJS-5D-4uj" secondAttribute="top" constant="18" id="4JO-po-eZq"/>
                             <constraint firstItem="XDX-XS-WNX" firstAttribute="centerX" secondItem="IJS-5D-4uj" secondAttribute="centerX" id="4Ph-yn-VFm"/>
                             <constraint firstItem="cdI-el-7eE" firstAttribute="top" secondItem="XDX-XS-WNX" secondAttribute="bottom" constant="26" id="EHr-rf-LSa"/>
+                            <constraint firstItem="0Qj-QH-SQA" firstAttribute="centerY" secondItem="DBv-bb-1hd" secondAttribute="centerY" id="MHp-E5-hQ4"/>
+                            <constraint firstItem="0Qj-QH-SQA" firstAttribute="centerX" secondItem="DBv-bb-1hd" secondAttribute="centerX" id="k53-rF-IVu"/>
                             <constraint firstItem="IJS-5D-4uj" firstAttribute="trailing" secondItem="cdI-el-7eE" secondAttribute="trailing" id="tAV-wj-EHh"/>
+                            <constraint firstItem="0Qj-QH-SQA" firstAttribute="top" secondItem="XDX-XS-WNX" secondAttribute="top" constant="200" id="uN8-Mo-LhO"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Favorites" image="star" catalog="system" id="b0R-FT-cN5"/>
                     <connections>
                         <outlet property="favoritesTableView" destination="F2e-bi-3YQ" id="Rgq-ef-X1s"/>
+                        <outlet property="noFavoriLabel" destination="0Qj-QH-SQA" id="h8c-Sm-Ul1"/>
                         <outlet property="toggleOutlet" destination="XDX-XS-WNX" id="L9b-of-pUC"/>
                     </connections>
                 </viewController>
@@ -586,7 +596,7 @@
                             </segmentedControl>
                             <searchBar contentMode="redraw" insetsLayoutMarginsFromSafeArea="NO" text="" translatesAutoresizingMaskIntoConstraints="NO" id="5gx-Na-VSl">
                                 <rect key="frame" x="0.0" y="112" width="393" height="56"/>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="5We-IC-axY"/>
                                 </constraints>
@@ -857,6 +867,9 @@
         <image name="img1" width="1280" height="1920"/>
         <image name="img6" width="2765" height="4096"/>
         <image name="star" catalog="system" width="128" height="116"/>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
@@ -864,7 +877,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

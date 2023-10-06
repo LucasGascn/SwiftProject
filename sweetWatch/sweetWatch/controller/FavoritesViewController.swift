@@ -12,13 +12,13 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBOutlet weak var toggleOutlet: UISegmentedControl!
     
+    @IBOutlet weak var noFavoriLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.favoritesTableView.delegate = self
         self.favoritesTableView.dataSource = self
-        
         loadData()
         
         // Do any additional setup after loading the view.
@@ -61,9 +61,11 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         if self.toggleOutlet.selectedSegmentIndex == 0{
             cell.favoriteTitleView.text = self.movieList[indexPath.row].name
             cell.favoriteResumeView.text = self.movieList[indexPath.row].synopsis
+            self.noFavoriLabel.isHidden = self.movieList.count == 0 ? false : true
         }else{
             cell.favoriteTitleView.text = self.serieList[indexPath.row].name
             cell.favoriteResumeView.text = self.serieList[indexPath.row].synopsis
+            self.noFavoriLabel.isHidden = self.serieList.count == 0 ? false : true
         }
         
         
@@ -120,6 +122,11 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @IBAction func toggleTableView(_ sender: Any) {
+        if self.toggleOutlet.selectedSegmentIndex == 0{
+            self.noFavoriLabel.isHidden = self.movieList.count == 0 ? false : true
+        }else{
+            self.noFavoriLabel.isHidden = self.serieList.count == 0 ? false : true
+        }
         self.favoritesTableView.reloadData()
     }
     
@@ -145,6 +152,11 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
             for serie in serieArray ?? []{
                 self.serieList.append(serie)
             }
+        }
+        if self.toggleOutlet.selectedSegmentIndex == 0{
+            self.noFavoriLabel.isHidden = self.movieList.count == 0 ? false : true
+        }else{
+            self.noFavoriLabel.isHidden = self.serieList.count == 0 ? false : true
         }
         self.favoritesTableView.reloadData()
     }
