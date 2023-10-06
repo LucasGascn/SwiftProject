@@ -259,7 +259,8 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
                 user?.addToMovies(movie ?? Movies())
             }
             
-            
+            self.dismiss(animated: true){
+            }
             dataManager.save()
         }
         

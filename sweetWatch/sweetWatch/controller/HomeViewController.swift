@@ -42,6 +42,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        GetMovies()
+        GetSeries()
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.moviesCollectionView{
             return Movies.count
