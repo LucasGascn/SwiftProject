@@ -63,7 +63,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
                        let results = json["results"] as? [[String: Any]] {
-                        print(results)
                         var moviesArray: [Movie] = []
                         for result in results {
                             if let title = result["title"] as? String,
@@ -73,8 +72,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                 
                                 let movie = Movie(title: title, posterPath: posterPath, id: id)
                                 moviesArray.append(movie)
-                                print(movie)
-                                
                             }
                             
                            else if let title = result["name"] as? String,
@@ -84,8 +81,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                 
                                 let movie = Movie(title: title, posterPath: posterPath, id: id)
                                 moviesArray.append(movie)
-                                print(movie)
-                                
                             }
                         }
                         
@@ -190,7 +185,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                     
                                     let movie = Movie(title: title, posterPath: posterPath, id: id)
                                     moviesArray.append(movie)
-                                    print(movie)
                                 }
                                 else if let title = result["name"] as? String,
                                     let posterPath = result["poster_path"] as? String,
@@ -199,7 +193,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                      
                                      let movie = Movie(title: title, posterPath: posterPath, id: id)
                                      moviesArray.append(movie)
-                                     print(movie)
                                      
                                  }
                                 

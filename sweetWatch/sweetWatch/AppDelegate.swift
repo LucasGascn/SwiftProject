@@ -17,9 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 //        if let rootVC = window?.rootViewController as? ViewController {
 //                    rootVC.container = persistentContainer
-//                }        
-        let container = NSPersistentContainer(name: "Model")
-          print(container.persistentStoreDescriptions.first?.url)
+//                }
         return true
     }
 

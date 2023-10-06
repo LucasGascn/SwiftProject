@@ -1,17 +1,18 @@
 //
-//  CustomCollectionViewCell.swift
+//  ActorsCollectionViewCell.swift
 //  sweetWatch
 //
-//  Created by Jules Duarte on 04/10/2023.
+//  Created by coding on 05/10/2023.
 //
 
 import UIKit
 
-class CustomCollectionViewCell: UICollectionViewCell {
+class ActorsCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var cellImage: UIImageView!
+    @IBOutlet weak var actorsViewCell: UIImageView!
     
-    static let identifier = "CustomCollectionViewCell"
+    @IBOutlet weak var actorsNameLabel: UILabel!
+    static let identifier = "ActorsCollectionViewCell"
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,7 +28,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
                 if let imageData = data {
                     DispatchQueue.main.async {
                         if let image = UIImage(data: imageData) {
-                            self.cellImage.image = image
+                            self.actorsViewCell.image = image
                         }
                     }
                 }
