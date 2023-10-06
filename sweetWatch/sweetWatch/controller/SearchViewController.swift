@@ -35,6 +35,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let title: String
         let posterPath: String
         let id: Int
+        let resume : String
     }
     var movies: [Movie] = []
     var selectedCategory: String = "movie" // Par défaut, recherche de films
@@ -42,7 +43,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func popularMovie(){
         self.searchTableView.delegate = self
         self.searchTableView.dataSource = self
-        
         let headers = [
           "accept": "application/json",
           "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxODQyNTJmYjRjNDVkMzE4ZjE1NGQwNzIzOTYzZmRjNiIsInN1YiI6IjY1MWJjYzA5NjcyOGE4MDEzYzQxNzI5ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xtWVRlxeUp42ahtck_sWoi1EtkR6hL16hBCRRsOztUk"
@@ -67,19 +67,21 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         for result in results {
                             if let title = result["title"] as? String,
                                let posterPath = result["poster_path"] as? String,
-                               let id = result["id"] as? Int
+                               let id = result["id"] as? Int,
+                               let resume = result["overview"] as? String
                             {
                                 
-                                let movie = Movie(title: title, posterPath: posterPath, id: id)
+                                let movie = Movie(title: title, posterPath: posterPath, id: id, resume: resume )
                                 moviesArray.append(movie)
                             }
                             
                            else if let title = result["name"] as? String,
                                let posterPath = result["poster_path"] as? String,
-                               let id = result["id"] as? Int
+                               let id = result["id"] as? Int,
+                                let resume = result["overview"] as? String
                             {
                                 
-                                let movie = Movie(title: title, posterPath: posterPath, id: id)
+                                let movie = Movie(title: title, posterPath: posterPath, id: id, resume: resume)
                                 moviesArray.append(movie)
                             }
                         }
@@ -119,6 +121,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         toggleButton.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
         popularMovie()
+        [self.searchBar.backgroundColor = UIColor.darkGray];
+        [self.searchBar.barTintColor = UIColor.darkGray];
     }
     
     
@@ -129,10 +133,13 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return movies.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCellIdentifier", for: indexPath) as! CustomFavoriteCell
         let movie = movies[indexPath.row]
-        cell.textLabel?.text = movie.title
-        cell.imageView?.downloaded(from: URL(string: "https://image.tmdb.org/t/p/w500" + movie.posterPath)!)
+        cell.favoriteView.layer.cornerRadius = 15
+        cell.favoriteImageView.layer.cornerRadius = 5
+        cell.favoriteTitleView?.text = movie.title
+        cell.favoriteImageView?.downloaded(from: URL(string: "https://image.tmdb.org/t/p/w500" + movie.posterPath)!)
+        cell.favoriteResumeView?.text = movie.resume == "" ? "No Description" : movie.resume
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -180,18 +187,21 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                             for result in results {
                                 if let title = result["title"] as? String,
                                    let posterPath = result["poster_path"] as? String,
-                                   let id = result["id"] as? Int
+                                   let id = result["id"] as? Int,
+                                    let resume = result["overview"] as? String
                                 {
                                     
-                                    let movie = Movie(title: title, posterPath: posterPath, id: id)
+                                    let movie = Movie(title: title, posterPath: posterPath, id: id, resume: resume )
                                     moviesArray.append(movie)
                                 }
                                 else if let title = result["name"] as? String,
                                     let posterPath = result["poster_path"] as? String,
-                                    let id = result["id"] as? Int
+                                    let id = result["id"] as? Int,
+                                        let resume = result["overview"] as? String
+
                                  {
                                      
-                                     let movie = Movie(title: title, posterPath: posterPath, id: id)
+                                     let movie = Movie(title: title, posterPath: posterPath, id: id, resume: resume)
                                      moviesArray.append(movie)
                                      
                                  }

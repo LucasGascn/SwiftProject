@@ -16,8 +16,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet weak var moviesCollectionView: UICollectionView!
     @IBOutlet weak var seriesCollectionView: UICollectionView!
     
-    var Movies : [Movie] = []
-    var Series : [Serie] = []
+    var movies : [Movie] = []
+    var series : [Serie] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         let layout = UICollectionViewFlowLayout()
@@ -50,10 +50,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.moviesCollectionView{
-            return Movies.count
+            return movies.count
         }
         if collectionView == self.seriesCollectionView{
-            return Series.count
+            return series.count
         }
         return 0
     }
@@ -65,10 +65,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         cell.layer.cornerRadius = 10
         if collectionView == self.moviesCollectionView {
-            cell.configure(image: "https://www.themoviedb.org/t/p/w1280/\(Movies[indexPath.item].image)")
+            cell.configure(image: "https://www.themoviedb.org/t/p/w1280/\(movies[indexPath.item].image)")
         }
         if collectionView == self.seriesCollectionView {
-            cell.configure(image: "https://www.themoviedb.org/t/p/w1280/\(Series[indexPath.item].image)")
+            cell.configure(image: "https://www.themoviedb.org/t/p/w1280/\(series[indexPath.item].image)")
         }
         return cell
     }
@@ -91,7 +91,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                               let id = item["id"] as? Int
                               let image = item["poster_path"] as? String
                               let movie = Movie(id: id ?? 0, name: "", image: image ?? "", resume: "", rating: 0, actors: [])
-                              self.Movies.append(movie)
+                              self.movies.append(movie)
+                              
                               
                           }
                       }
@@ -123,7 +124,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                               let id = item["id"] as? Int
                               let image = item["poster_path"] as? String
                               let serie = Serie(id: id ?? 0, name: "", image: image ?? "", resume: "", rating: 0, actors: [])
-                              self.Series.append(serie)
+                              self.series.append(serie)
                               
                           }
                       }
@@ -141,7 +142,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "detailView") as? DetailViewController {
             
             //Afficher une modal
-            vc.searchId = collectionView == self.seriesCollectionView ? Series[indexPath.item].id : Movies[indexPath.item].id
+            vc.searchId = collectionView == self.seriesCollectionView ? series[indexPath.item].id : movies[indexPath.item].id
             vc.searchType = collectionView == self.seriesCollectionView ? "tv" : "movie"
 
             self.present(vc, animated: true, completion: nil)
