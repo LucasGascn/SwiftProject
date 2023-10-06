@@ -140,6 +140,19 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.imageView?.downloaded(from: URL(string: "https://image.tmdb.org/t/p/w500" + movie.posterPath)!)
         return cell
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "detailView") as? DetailViewController {
+            
+            //Afficher une modal
+            vc.searchId = self.movies[indexPath.item].id
+            
+            vc.searchType = selectedCategory
+            vc.searchVc = self
+            
+            self.present(vc, animated: true, completion: nil)
+            
+        }
+    }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         

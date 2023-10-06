@@ -48,7 +48,7 @@ class DetailViewController: UIViewController {
     var itemToDisplay =  ItemToDisplay(id: 0, title: "", image: UIImage(), imageUrl: "", description: "", genre: [], date: "", note: 0)
     
     var favoriteVc : FavoritesViewController = FavoritesViewController()
-    
+    var searchVc : SearchViewController = SearchViewController()
     override func viewDidLoad() {
         super.viewDidLoad()
         
