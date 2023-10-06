@@ -79,7 +79,8 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         if canBeDeleted {
             self.detailButton.setTitle("Remove from WatchList", for: .normal)
-            self.detailButton.backgroundColor = .red
+            self.detailButton.backgroundColor = .clear
+            self.detailButton.backgroundColor = UIColor.red
         }
         getDetail()
         getActors()
@@ -187,7 +188,7 @@ class DetailViewController: UIViewController, UICollectionViewDelegate, UICollec
             fatalError("failed")
         }
         
-        cell.layer.cornerRadius = 10
+        cell.layer.cornerRadius = 20
         
         print()
         cell.configure(image: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2\(actors[indexPath.item].image)")
